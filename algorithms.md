@@ -198,7 +198,7 @@ function chunk2(array, size) {
   let index = 0; //assigning let because we want this value to change over time.
   while (index < array.length) {
     chunked.push(array.slice(index, index + size)); //Selecting everything from the index up to but not including index + size
-    index += size;  //incrementing by size not by 1 
+    index += size; //incrementing by size not by 1
   }
   return chunked;
 }
@@ -212,19 +212,52 @@ Select the character at the first index up to but not including the third index.
 ["a", "b", "c"]
 
 ```js
+function anagramChecker(string1, string2) {
+  return helperString(string1) === helperString(string2);
+}
+
+function anagramChecker2(string1, string2) {
+  const aChapMap = buildCharacterMap(string1);
+  const bCharMap = buildCharacterMap(string2);
+
+  if (Object.keys(aCharMap).length !== Object.keys(bCharMap).length) {
+    return false;
+  }
+  for (let char in aCharMap) {
+    if (aCharMap[char] !== bCharMap[char]) {
+      return false;
+    }
+  }
+  return true
+}
+
+function buildCharacterMap(string) {
+  const charMap = {};
+  for (let char of str.replace(/[^\w]/g, "").toLowerCase()) {
+    charMap[char] = charMap[char] + 1 || 1;
+  }
+  return charMap;
+}
+
+function helperString(str) {
+  return str.replace(/[^\w]/g, "").toLowerCase().split("").sort().join("");
+}
+```
+
+`Retrieving keys from an object`
+
+```js
+letters = {a: 1, b:2, c: 3}
+Object.keys(letters) => ["a", "b", "c"]
+Object.keys(letters).length => 3
+```
+
+```js
 function capitalizedWords(string) {
   const words = [];
   for (let word of string.split(" ")) {
     words.push(word[0].toUpperCase().word.slice(1));
   }
   return words.join;
-}
-
-function helperString(str) {
-  return str.replace(/[^\w]/g, "").toLowerCase().split("").sort().join("");
-}
-
-function anagramChecker(string1, string2) {
-  return helperString(string1) === helperString(string2);
 }
 ```
