@@ -43,7 +43,7 @@ function reverseInteger(n) {
 // The every() method tests whether all elements in the array pass the test implemented by the provided function. It returns a Boolean value.
 function palindromeTest(str) {
   return str.split("").every((char, index) => {
-    return char === str[str.length - index - 1];
+    return char === str[str.length - index - 1];   //checking the element on the other side of the array.  -1 because 0 index. 
   });
 }
 
@@ -105,6 +105,8 @@ function fizzBuzzer(n) {
   }
 }
 
+
+
 /*
 Given an array and chunk size, divide the array into many subarrays where each subarray is of length size
 
@@ -121,7 +123,7 @@ Steps
 Create a constant named chunked and set it equal to an empty array. 
   This will hold all of the chunks of data
 For each element in the "unchunked" array
-  Retrieve the last element in "chunked" array 
+  Retrieve the last element in "chunked" array (it's initially empty)
   If the last element does not exist, OR if it's length is equal to the chunk size which is passed as an argument.
     PUSH a new chunk into "chunked" with the current element 
   ELSE
@@ -137,10 +139,6 @@ Don't forget to return the array.
 
 
 
-
-
-
-
 function chunky(array, size) {
   const chunked = [];
   let index = 0;
@@ -150,6 +148,14 @@ function chunky(array, size) {
   }
   return chunked;
 }
+
+function chunk2(array, size) {
+  
+}
+
+
+
+
 
 
 
