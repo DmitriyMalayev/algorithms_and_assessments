@@ -216,6 +216,10 @@ function anagramChecker(string1, string2) {
   return helperString(string1) === helperString(string2);
 }
 
+function helperString(str) {
+  return str.replace(/[^\w]/g, "").toLowerCase().split("").sort().join("");
+}
+
 function anagramChecker2(string1, string2) {
   const aChapMap = buildCharacterMap(string1);
   const bCharMap = buildCharacterMap(string2);
@@ -228,7 +232,7 @@ function anagramChecker2(string1, string2) {
       return false;
     }
   }
-  return true
+  return true;
 }
 
 function buildCharacterMap(string) {
@@ -237,10 +241,6 @@ function buildCharacterMap(string) {
     charMap[char] = charMap[char] + 1 || 1;
   }
   return charMap;
-}
-
-function helperString(str) {
-  return str.replace(/[^\w]/g, "").toLowerCase().split("").sort().join("");
 }
 ```
 
