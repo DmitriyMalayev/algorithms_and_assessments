@@ -6,8 +6,7 @@ function shapeArea(n) {
   }
   return area;
 }
-// [6, 2, 3, 8]
-// How many are missing? 3  (4, 5, 7)
+// [6, 2, 3, 8]   How many are missing? 3  (4, 5, 7)
 function makeArrayConsecutive2(statues) {
   statues.sort((a, b) => {
     return a - b;
@@ -25,7 +24,6 @@ function makeArrayConsecutive2(statues) {
   }
   return count;  
 }
-
 
 function reverseString(str) {
   return str.split("").reverse().join("");
@@ -65,10 +63,8 @@ function palindromeTest3(str) {
   return (start === flip)
 }
 
-
-
-
 /*
+Return the character that is most commonly used
 Make an empty Object
 Convert the passed in string to an Object (keys are the letters, values how many times they appear)
 */ 
@@ -86,14 +82,15 @@ function maxCharacters(str) {
   let maxChar = "";
 
   for (let char in charMap) {   //IN => Used for an Object
-    if (charMap[char] > max) {
-      max = charMap[char];
-      maxChar = char;
+    if (charMap[char] > max) {  //charMap[char] returns value not letter  if the statement is true
+      max = charMap[char];  //assigns the value
+      maxChar = char;  //assigns the letter that is most common 
     }
   }
   return maxChar;
 }
 
+// % Modulo Operator returns the remainder 
 function fizzBuzzer(n) {
   for (let i = 0; i <= n; i++) {
     if (i % 15 === 0) {
@@ -108,6 +105,42 @@ function fizzBuzzer(n) {
   }
 }
 
+/*
+Given an array and chunk size, divide the array into many subarrays where each subarray is of length size
+
+chunk([1, 2, 3, 4], 2) --> [[ 1, 2], [3, 4]]      
+chunk([1, 2, 3, 4, 5], 2) --> [[ 1, 2], [3, 4], [5]]
+chunk([1, 2, 3, 4, 5, 6, 7, 8], 3) --> [[ 1, 2, 3], [4, 5, 6], [7, 8]]
+chunk([1, 2, 3, 4, 5], 4) --> [[ 1, 2, 3, 4], [5]]
+chunk([1, 2, 3, 4, 5], 10) --> [[ 1, 2, 3, 4, 5]]
+
+The first argument array specifies the array that's passed in
+The second argument size specifies the number of elements in each chunk, NOT the number of arrays in the main array. 
+
+Steps
+Create a constant named chunked and set it equal to an empty array. 
+  This will hold all of the chunks of data
+For each element in the "unchunked" array
+  Retrieve the last element in "chunked" array 
+  If the last element does not exist, OR if it's length is equal to the chunk size which is passed as an argument.
+    PUSH a new chunk into "chunked" with the current element 
+  ELSE
+    ADD the current element into the chunk 
+Rather than putting a new chunk inside of chunked, and then adding an element in, we can do both things simulataneously.
+  We PUSH in a new chunk and immediately put our element that we're currently iterating over inside.
+Don't forget to return the array.
+
+
+*/ 
+
+
+
+
+
+
+
+
+
 function chunky(array, size) {
   const chunked = [];
   let index = 0;
@@ -117,6 +150,8 @@ function chunky(array, size) {
   }
   return chunked;
 }
+
+
 
 function capitalizedWords(string) {
   const words = [];
