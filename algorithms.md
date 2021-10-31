@@ -262,20 +262,34 @@ function capitalizedWords(string) {
 }
 ```
 
+Sum an Array of numbers
 
-Sum an Array of numbers 
 ```js
 function simpleArraySum(ar) {
-    let sum = 0
-    for (let n of ar)
-    sum += n;
-    return sum
+  let sum = 0;
+  for (let n of ar) sum += n;
+  return sum;
 }
 
-
-function simpleArraySum2(ar){
-    const newValue = ar.reduce((accumulator, currentValue) => {
-        return accumulator + currentValue
-    }, 0)
-    return newValue
+function simpleArraySum2(ar) {
+  const newValue = ar.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue;
+  }, 0);
+  return newValue;
 }
+
+// Compare two sets of arrays and increment the higher number
+
+function compareTriplets(a, b) {
+  const score = [0, 0];
+
+  for (let i = 0; i < 3; i++) {
+    if (a[i] > b[i]) {
+      score[0]++;
+    } else if (a[i] < b[i]) {
+      score[1]++;
+    }
+  }
+  return score;
+}
+```
