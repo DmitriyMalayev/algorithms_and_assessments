@@ -261,3 +261,21 @@ function capitalizedWords(string) {
   return words.join;
 }
 ```
+
+
+Sum an Array of numbers 
+```js
+function simpleArraySum(ar) {
+    let sum = 0
+    for (let n of ar)
+    sum += n;
+    return sum
+}
+
+
+function simpleArraySum2(ar){
+    const newValue = ar.reduce((accumulator, currentValue) => {
+        return accumulator + currentValue
+    }, 0)
+    return newValue
+}
