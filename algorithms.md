@@ -297,10 +297,10 @@ function compareTriplets(a, b) {
 # Bitwise Operators and Binary Numbers
 
 0 0  
-1 1   2^0
-2 10  2^1
+1 1 2^0
+2 10 2^1
 3 11  
-4 100  2^2
+4 100 2^2
 5 101
 6 110
 7 111
@@ -312,3 +312,29 @@ function compareTriplets(a, b) {
 13 1101
 14 1110
 15 1111
+
+AND & (both digits in the column are 1)
+OR |
+XOR ^
+NOT ~
+Shift Left <<
+Shift Right >>
+
+```js
+let log = console.log;
+let num = 10; //same as 1010
+let int = 6; //same as  110
+
+1010;
+110;
+0010; //result with AND
+
+console.log(num.toString(2), int.toString(2));  //2   decimal equivalent of 0010
+
+let temp = 2 
+console.log(temp.toString(2))  //10    binary equivalent of 0010
+
+```
+`toString`
+  This method takes an argument of a regex / base number. 
+  
