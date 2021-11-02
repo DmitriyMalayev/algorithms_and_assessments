@@ -363,6 +363,38 @@ function stepsMaker1(n) {
     console.log(stair); //This console.log is within the for loop because we want one console.log for each row we assembled.
   }
 }
+/*
+RECURSION SOLUTION
+
+
+ IF (row === n) then we have hit the end of our problem
+ IF the string "stair" has a (length === n) then we are at the end of a row
+ IF the length of the string "stair" is less than or equal to the row number we're working on, we add a "#", otherwise add a space
+*/
+
+
+
+function stepsMaker2(n, row = 0, stair = "") {
+  //providing a default value for row(0 is top row) and stair (empty string).
+  if (n === row) { //base case
+    return;
+  }
+
+  if (n === stair.length) {  
+    console.log(stair);
+    return steps(n, row + 1, ""); //Third argument optional because of the presence of the default argument.
+  }
+  if (stair.length <= row) {
+    //If length of the stair string is <= to the row we're working on we add a # or a space.
+    stair += "#";
+  } else {
+    stair += " ";
+  }
+  steps(n, row, stair); //We don't change the value of row here because we're still working on the same row.
+}
+
+
+
 
 /*
 RECURSION 
@@ -396,23 +428,3 @@ function printNumber2(num, dec = 1) {  //make sure you have a default value for 
 }
 
 printNumber(10);
-
-
-
-function stepsMaker2(n, row = 0, stair = "") {
-  //providing a default value for row(0 is top row) and stair (empty string).
-  if (n === row) {
-    return;
-  }
-  if (n === stair.length) {
-    console.log(stair);
-    return steps(n, row + 1, ""); //Third argument optional because of the presence of the default argument.
-  }
-  if (stair.length <= row) {
-    //If length of the stair string is <= to the row we're working on we add a # or a space.
-    stair += "#";
-  } else {
-    stair += " ";
-  }
-  steps(n, row, stair); //We don't change the value of row here because we're still working on the same row.
-}
