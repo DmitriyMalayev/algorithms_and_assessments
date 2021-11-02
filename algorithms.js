@@ -309,10 +309,110 @@ function compareTriplets(a, b) {
   return score;
 }
 
-function capitalize(str) {
-  let sentence = [];
-  for (let word of str.split(" ")) {
-    return sentence.push(word);
+/*
+Write a function that accepts a positive number N.
+The function should console.log() a step shape with N levels using the # character.  
+Make sure the step has spaces on the right hand side!
+
+Examples
+  steps(2)
+      '# '
+      '##'
+  steps(3)
+      '#  '
+      '## '
+      '###'
+  steps(4)
+      '#   '
+      '##  '
+      '### '
+      '####'
+
+Guide
+  First we will make a for loop and iterate through rows. from 0 to n. 
+    Create an empty string, "stair"  which is singular
+    Iterate from 0 to n through columns 
+      IF the current column is equal to or less than the current row
+        Add a "#" to "stair"
+      ELSE
+        Add a space to "stair"
+    console.log(stair)
+
+
+    c0 c1 c2
+r0  #  _  _
+r1  #  #  _ 
+r2  #  #  # 
+
+
+  
+*/
+
+function stepsMaker1(n) {
+  for (let row = 0; row < n; row++) {
+    let stair = "";
+
+    for (let column = 0; column < n; column++) {
+      if (column <= row) {
+        stair += "#";
+      } else {
+        stair += " ";
+      }
+    }
+
+    console.log(stair); //This console.log is within the for loop because we want one console.log for each row we assembled.
   }
-  return sentence;
+}
+
+/*
+RECURSION 
+Identify the minimum amount of information to represent your problem
+Give reasonable defaults to the bare minimum pieces of information
+Check the base case. Is there any work left to do? If not, return. 
+Do some work. Call your function again, making sure the arguments have changed in some way. 
+
+*/
+
+function printNumber(num) {
+  if (num === 0) {
+    return 
+  }
+  console.log(num);
+  printNumber(num - 1);
+  //bare minimum amount of information needed to call our function again and progress towards base case.
+}
+
+printNumber(10);
+
+
+
+function printNumber2(num, dec = 1) {  //make sure you have a default value for dec
+  if (num === 0) {
+    return;
+  }
+  console.log(num);
+  printNumber(num - dec);
+  //bare minimum amount of information needed to call our function again and progress towards base case.
+}
+
+printNumber(10);
+
+
+
+function stepsMaker2(n, row = 0, stair = "") {
+  //providing a default value for row(0 is top row) and stair (empty string).
+  if (n === row) {
+    return;
+  }
+  if (n === stair.length) {
+    console.log(stair);
+    return steps(n, row + 1, ""); //Third argument optional because of the presence of the default argument.
+  }
+  if (stair.length <= row) {
+    //If length of the stair string is <= to the row we're working on we add a # or a space.
+    stair += "#";
+  } else {
+    stair += " ";
+  }
+  steps(n, row, stair); //We don't change the value of row here because we're still working on the same row.
 }
