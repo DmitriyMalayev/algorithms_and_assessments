@@ -253,6 +253,9 @@ Object.keys(letters).length => 3
 ```
 
 
+
+
+
 ```js
 function capitalizedWords(string) {
   const words = [];
@@ -262,15 +265,6 @@ function capitalizedWords(string) {
   return words.join;
 }
 ```
-
-
-
-
-
-
-
-
-
 
 Sum an Array of numbers
 
@@ -303,5 +297,3 @@ function compareTriplets(a, b) {
   return score;
 }
 ```
-
-
