@@ -480,22 +480,25 @@ function pyramidBuilder1(n) {
     let level = "";
     for (let column = 0; column < 2 * n - 1; column++) {
       if (midpoint - row <= column && midpoint + row >= column) {
+        debugger 
         level += "#";
       } else {
         level += " ";
       }
     }
+    console.log(level);
   }
 }
-
-Math.floor;
 pyramidBuilder1(3);
 
 /*
+Math.floor;  2.5 => 2 
+Math.ceil; 2.5 => 3
+
 const columns = [0, 1, 2, 3, 4];
 const row = 0;
 
-2 - 0 <= 0 && 2 + 0 >= 0; 
+2 - 0 <= 0 && 2 + 0 >= 0;  
 2 - 1 <= 1 && 2 + 1 >= 1;
 2 - 2 <= 2 && 2 + 2 >= 2;
 
