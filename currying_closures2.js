@@ -19,3 +19,19 @@ let spicedUpCode = function (fn, ...n) {
 let doAvg = spiceUp(avg, 1, 2, 3);
 console.log(doAvg(4, 5, 6));
 
+let sayWhat = function (a) {
+  return function (b) {
+    return function (c) {
+      console.log(`saying ${a} to ${b} using ${c}`);
+    };
+  };
+};
+
+sayWhat("Hello")("My Friends")("JavaScript")
+
+
+let sayHi = sawWhat("Hi")
+let sayHiToMe = sayHi("Me")
+let sayHiToMeUsingNothing = sayHiToMe("nothing")
+
+//say Hi to Me using nothing
