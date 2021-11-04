@@ -347,7 +347,6 @@ r2  #  #  #
 
   
 */
-
 function stepsMaker1(n) {
   for (let row = 0; row < n; row++) {
     let stair = "";
@@ -372,15 +371,14 @@ RECURSION SOLUTION
  IF the length of the string "stair" is less than or equal to the row number we're working on, we add a "#", otherwise add a space
 */
 
-
-
 function stepsMaker2(n, row = 0, stair = "") {
   //providing a default value for row(0 is top row) and stair (empty string).
-  if (n === row) { //base case
+  if (n === row) {
+    //base case
     return;
   }
 
-  if (n === stair.length) {  
+  if (n === stair.length) {
     console.log(stair);
     return steps(n, row + 1, ""); //Third argument optional because of the presence of the default argument.
   }
@@ -393,8 +391,6 @@ function stepsMaker2(n, row = 0, stair = "") {
   steps(n, row, stair); //We don't change the value of row here because we're still working on the same row.
 }
 
-
-
 function stepsMaker2(n, row = 0, stair = "") {
   if (n === row) {
     return;
@@ -402,21 +398,11 @@ function stepsMaker2(n, row = 0, stair = "") {
 
   if (n === stair.length) {
     console.log(stair);
-    return steps(n, row + 1, ""); 
+    return steps(n, row + 1, "");
   }
-  const add = stair.length <= row ? "#" : " "
+  const add = stair.length <= row ? "#" : " ";
   steps(n, row, stair + add);
 }
-
-
-
-
-
-
-
-
-
-
 
 /*
 RECURSION 
@@ -429,7 +415,7 @@ Do some work. Call your function again, making sure the arguments have changed i
 
 function printNumber(num) {
   if (num === 0) {
-    return 
+    return;
   }
   console.log(num);
   printNumber(num - 1);
@@ -438,9 +424,8 @@ function printNumber(num) {
 
 printNumber(10);
 
-
-
-function printNumber2(num, dec = 1) {  //make sure you have a default value for dec
+function printNumber2(num, dec = 1) {
+  //make sure you have a default value for dec
   if (num === 0) {
     return;
   }
