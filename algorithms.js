@@ -434,4 +434,98 @@ function printNumber2(num, dec = 1) {
   //bare minimum amount of information needed to call our function again and progress towards base case.
 }
 
-printNumber(10);
+printNumber2(10);
+
+/*
+ PYRAMID
+
+    c0 c1 c2 c3 c4
+r0  _  _  #  _  _ 
+r1  _  #  #  #  _ 
+r2  #  #  #  #  #
+
+Directions
+ Write a function that accepts a positive number N.
+ The function should console log a pyramid shape
+ with N levels using the # character.  Make sure the
+ pyramid has spaces on both the left *and* right hand sides
+ --- Examples
+   pyramid(1)
+       '#'
+   pyramid(2)
+       ' # '
+       '###'
+   pyramid(3)
+       '  #  '
+       ' ### '
+       '#####'
+Solution 1 
+  From 0 to n  (iterate through rows)
+    Create an empty string, "level"
+    From 0 to ??? (columns) 
+      IF the column shoujld have a #
+        Add a "#" to level
+      ELSE
+        Add a space " " to "level"
+    console.log(stair)
+
+Number of rows * 2  - 1 = Gives us the correct number of columns 
+n * 2 - 1 
+
+*/
+function pyramidBuilder1(n) {
+  const midpoint = Math.floor((2 * n - 1) / 2); //midpoint index
+
+  for (let row = 0; row < n; row++) {
+    let level = "";
+    for (let column = 0; column < 2 * n - 1; column++) {
+      if (midpoint - row <= column && midpoint + row >= column) {
+        level += "#";
+      } else {
+        level += " ";
+      }
+    }
+  }
+}
+
+Math.floor;
+pyramidBuilder1(3);
+
+/*
+const columns = [0, 1, 2, 3, 4];
+const row = 0;
+
+2 - 0 <= 0 && 2 + 0 >= 0; 
+2 - 1 <= 1 && 2 + 1 >= 1;
+2 - 2 <= 2 && 2 + 2 >= 2;
+
+2 - 3 <= 3 && 2 + 3 >= 3;
+2 - 4 <= 4 && 2 + 4 >= 4;
+
+How to calculate the midpoint of our array?
+n is the total number of rows we're working with
+ 5 is the number of columns
+
+Math.floor(5 / 2);
+
+Math.floor((2 * n - 1) / 2);
+*/
+
+function pyramid(n) {
+  const midpoint = Math.floor((2 * n - 1) / 2);
+  for (let row = 0; row < n; row++) {
+    let level = ""; //Represents a level of a pyramid
+
+    for (let column = 0; column < n * 2 - 1; column++) {
+      if (midpoint - row <= column && midpoint + row >= column) {
+        //makes sure that the current column that we're looking at is within bounds.
+        level += "#";
+      } else {
+        level += " ";
+      }
+    }
+    console.log(level);
+  }
+}
+
+module.exports = pyramid;
