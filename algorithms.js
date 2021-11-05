@@ -541,3 +541,18 @@ module.exports = pyramidBuilder1;
 
 
 
+// Return the number of vowels used in a string. "a e i o u"
+
+function vowels(str) {
+  let num = 0
+  let checker = ["a", "e", "i", "o", "u"]
+  for (let letter of str) {
+    if (checker.includes(letter)){
+      num += 1
+    }
+  }
+  return num
+}
+
+vowels("words");
+
