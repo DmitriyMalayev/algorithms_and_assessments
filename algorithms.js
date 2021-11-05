@@ -543,16 +543,37 @@ module.exports = pyramidBuilder1;
 
 // Return the number of vowels used in a string. "a e i o u"
 
-function vowels(str) {
-  let num = 0
-  let checker = ["a", "e", "i", "o", "u"]
-  for (let letter of str) {
-    if (checker.includes(letter)){
-      num += 1
+
+function howManyVowels(str) {
+  let num = 0;
+  let checker = ["a", "e", "i", "o", "u"];
+  for (let letter of str.toLowerCase()) {
+    if (checker.includes(letter)) {
+      num += 1;
     }
   }
-  return num
+  return num;
 }
 
-vowels("words");
+howManyVowels("words");
+
+
+
+function howManyVowels2(str) {
+  const matches = str.match(/aeiou/gi)
+  return matches ? matches.length : 0
+}
+
+howManyVowels2("words");
+
+
+/*
+match
+  An object that supports being matched against.
+  Matches a string or an object that supports being matched against, and returns an Array containing the results of that search, or null if no matches are found.
+/g
+  Makes sure we don't stop at the first match
+/i
+  case incensitive
+*/
 

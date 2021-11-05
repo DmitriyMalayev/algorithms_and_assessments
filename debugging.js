@@ -31,6 +31,6 @@ function howManyVowels(str) {
   return num;
 }
 
-vowels("words");
+howManyVowels("words");
 
 
