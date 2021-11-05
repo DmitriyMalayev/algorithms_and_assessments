@@ -477,10 +477,10 @@ function pyramidBuilder1(n) {
   const midpoint = Math.floor((2 * n - 1) / 2); //midpoint index
 
   for (let row = 0; row < n; row++) {
-    let level = "";
+    let level = ""; //Represents a level of a pyramid
     for (let column = 0; column < 2 * n - 1; column++) {
       if (midpoint - row <= column && midpoint + row >= column) {
-        debugger 
+        //makes sure that the current column that we're looking at is within bounds.
         level += "#";
       } else {
         level += " ";
@@ -514,21 +514,30 @@ Math.floor(5 / 2);
 Math.floor((2 * n - 1) / 2);
 */
 
-function pyramid(n) {
-  const midpoint = Math.floor((2 * n - 1) / 2);
-  for (let row = 0; row < n; row++) {
-    let level = ""; //Represents a level of a pyramid
-
-    for (let column = 0; column < n * 2 - 1; column++) {
-      if (midpoint - row <= column && midpoint + row >= column) {
-        //makes sure that the current column that we're looking at is within bounds.
-        level += "#";
-      } else {
-        level += " ";
-      }
-    }
-    console.log(level);
+function pyramidBuilder2(n, row = 0, level = "") {
+  if (row === n) {
+    //base case in which if true we don't need to do anything
+    return;
   }
+  if (level.length === 2 * n - 1) {
+    //checks maximum column length and when we should move on to the next row
+    console.log(level);
+    return pyramidBuilder2(n, row + 1);
+  }
+  const midpoint = Math.floor((2 * n - 1) / 2); //midpoint index
+
+  //Decide if we add a " " or a "#" to the level string
+  let add;
+  if (midpoint - row <= level.length && midpoint.length >= level.length) {
+    add = "#";
+  } else {
+    add = " ";
+  }
+  //Make sure not to increment row because it still might be going through the loop.
+  pyramidBuilder2(n, row, level + add);
 }
 
-module.exports = pyramid;
+module.exports = pyramidBuilder1;
+
+
+
