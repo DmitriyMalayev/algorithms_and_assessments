@@ -539,10 +539,7 @@ function pyramidBuilder2(n, row = 0, level = "") {
 
 module.exports = pyramidBuilder1;
 
-
-
 // Return the number of vowels used in a string. "a e i o u"
-
 
 function howManyVowels(str) {
   let num = 0;
@@ -557,16 +554,6 @@ function howManyVowels(str) {
 
 howManyVowels("words");
 
-
-
-function howManyVowels2(str) {
-  const matches = str.match(/aeiou/gi)
-  return matches ? matches.length : 0
-}
-
-howManyVowels2("words");
-
-
 /*
 match
   An object that supports being matched against.
@@ -577,3 +564,97 @@ match
   case incensitive
 */
 
+function howManyVowels2(str) {
+  const matches = str.match(/aeiou/gi);
+  return matches ? matches.length : 0;
+}
+
+howManyVowels2("words");
+
+/* 
+Write a function that accepts an integer N and returns a NxN spiral matrix.
+EXAMPLES 
+  matrix(2)
+    [[1, 2],
+    [4, 3]]
+  matrix(3)
+    [[1, 2, 3],
+    [8, 9, 4],
+    [7, 6, 5]]
+ matrix(4)
+    [[1,   2,  3, 4],
+    [12, 13, 14, 5],
+    [11, 16, 15, 6],
+    [10,  9,  8, 7]]
+
+FIRST SOLUTION 
+Create an empty array of arrays called `results`
+Create a counter variable, starting at 1
+As long as (start column <= end column) AND (start row <= end row))
+  Loop from start column to end column
+    At results[start_row][i] assign counter variable
+    Increment counter
+  Increment start row
+  Loop from start row to end row
+    At results[i][end_column] assign counter variable
+    Increment counter
+  Decrement end column
+  ..Repeat for the other two sides
+*/
+
+function spiralMatrix(num) {
+  const results = [];
+  // The number of subArrays that will be inserted into results is dependent on the value of num
+  // If num === 2 results would be [[],[]]
+  for (let i = 0; i < n; i++) {
+    results.push([]);
+  }
+  //counter used to keep track of what number we want to try push in
+  //endColumn and endRow depends on the value of n  if 3 the last index of the end column would be 2
+  let counter = 1;
+  let startColumn = 0;
+  let endColumn = n - 1;
+  let startRow = 0;
+  let endRow = n - 1;
+
+  while (startColumn <= endColumn && startRow <= endRow) {
+    // Top Row
+    for (let i = startColumn; i <= endColumn; i++) {
+      results[startRow][i] = counter;
+      counter++;
+    }
+    startRow++;
+
+    for (let i = startRow; i <= endRow; i++) {
+      results[i][endColumn] = counter;
+    }
+    endColumn--;
+
+    for (let i = endColumn; i >= startColumn; i--) {
+      results[endRow][i] = counter;
+      counter++;
+    }
+    endRow--;
+
+    for (let i = endRow; i >= startRow; i--) {
+      results[i][startColumn] = counter;
+      counter++;
+    }
+    startColumn++;
+  }
+}
+
+/*
+We can assign values to Array that have not yet been initialized.
+
+const arr = [];
+arr[3] = "Hello there";
+console.log(arr)[(null, null, null, "Hello there")];
+
+4 for loops
+  1. Assembles the top row of our solution 1, 2, 3
+  2. Responsible for the row on the right hand size  4,5
+  3. Responsible for the row on the bottom 6, 7
+  4. Responsible for the left side 8
+  the while loop runs and assembles 9
+*/
