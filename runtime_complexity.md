@@ -55,33 +55,35 @@ function stepsBuilder(n) {
 # Common Runtimes
 
 `Constant Time => 1`
-No matter how many elements we're working with, the algorithm or operation will always take the same amount of time. This doesn't exist as of yet.?? 
+No matter how many elements we're working with, the algorithm or operation will always take the same amount of time. This doesn't exist as of yet.?
 
-`Logarithmic Time => log(n)`  `Searching through a sorted array of data`
+`Logarithmic Time => log(n)` `Searching through a sorted array of data`
 You have this if doubling the number of elements you are iterating over doesn't double the amount of work. Always assume that searching operations are log(n)
 Searching through a sorted array of data.
 
-`Linear Time => n`  `Anytime we're iterating over a string or array`
+`Linear Time => n` `Anytime we're iterating over a string or array`
 Iterating through all elements in a collection of data.
 If you see a loop spanning from 0 to array.length, you have probably have "n" or linear runtime.
 Could be iterating over a string or an array.
 If we add one element to our input set it's going to take one unit of time to complete.
 
-`Quasilinear Time => n * log(n)`
-You have this if doubling the number of elements you are iterating over doesn't double the amount of work.
+`Quasilinear Time => n * log(n)` `Anytime we're performing a sorting algorithm`
+You have this if doubling the number of elements you are iterating over doesn't double the amount of work but it increases the amount of work by 1 + a little bit.
 Always assume that any sorting operation is n \* log(n)
 Work required is a little bit more than 1.
 
-`Quadratic Time => N ^ 2`
+`Quadratic Time => N ^ 2`  `Steps Problem`  
 Every element in a collection has to be compared to every other element
 This is also known as "The handshake problem"
 
-`Exponential Time => 2 ^ N`
+`Exponential Time => 2 ^ N`  
 If you add a "single" element to a collection, the processing power required doubles.
+Worst case
+
 
 # Big "O" Notation / Runtime Complexity
-
 This is another way of referencing runtime complexity
+Determining the efficiency of our solution. 
 
 O(n) => Linear
 O(1) => Constant
@@ -89,33 +91,41 @@ O(n^2) => Quadratic
 
 # Identifying Runtime Complexity
 
-`Probably O(n)`
-Iterating with a simple for loop through a single collection?
+`Probably O(n)  =>  Probably Linear even if you iterated through half a collection`
+Iterating with a simple for loop through a single collection? 
+There are no Constants in runtime
+
 Reverse a string.
+```js
+function reverseString(str) {
+  let reversed = "";
+  for (let char of str) {
+    reversed = character + reversed;
+  }
+  return reversed;
+}
+```
 
-`Still O(n) There are no Constants in runtime`
-Iterating through half a collection?
-It's Linear even if you have iterated over half a collection.
-
-`O(n + m)`
-Iterating through two "different" collection with separate for loops.
+`O(n + m)` => `Iterating through 2 different collections with separate for loops`
+Iterating through two Different Collections of Data with Separate for loops in one function call
 Reverse two different strings or arrays in two separate for loops.
-n => indicates the performance impact of the first string / array
-m => indicates the second string or array, which could be shorter or longer
+n => Indicates the performance impact of the first string / array
+m => Indicates the second string or array, which could be shorter or longer
 
-`O(n ^ 2)`
-Two nested for loops iterating over the same collection?
+`O(n ^ 2)` => `Two nested for loops iterating over the same collection RED FLAG`
+Two nested for loops iterating over the same collection
 Nested for loops are a big red flag.
 Steps or Pyramid example
 
 `O(n * m)`
-Two nested for loops iterating over different collections?
+Two nested for loops iterating over different collections
 
 `O(n * log(n))`
 Sorting Operations
+Every sort operation can be assumed to be O(n*log(n)) runtime. 
 
 `O(log(n))`
-Searching a sorted array?
+Searching through a sorted array
 
 # Space Complexity
 
