@@ -644,6 +644,7 @@ function spiralMatrix(num) {
   }
 }
 
+spiralMatrix(6);
 /*
 We can assign values to Array that have not yet been initialized.
 
