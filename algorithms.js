@@ -600,6 +600,20 @@ As long as (start column <= end column) AND (start row <= end row))
     Increment counter
   Decrement end column
   ..Repeat for the other two sides
+  
+NOTES
+We can assign values to Array that have not yet been initialized.
+
+const arr = [];
+arr[3] = "Hello there";
+console.log(arr)[(null, null, null, "Hello there")];
+
+4 for loops
+  1. Assembles the top row of our solution 1, 2, 3
+  2. Responsible for the row on the right hand size  4,5
+  3. Responsible for the row on the bottom 6, 7
+  4. Responsible for the left side 8
+  the while loop runs and assembles 9
 */
 
 function spiralMatrix(num) {
@@ -645,17 +659,55 @@ function spiralMatrix(num) {
 }
 
 spiralMatrix(6);
+
 /*
-We can assign values to Array that have not yet been initialized.
+Fibonacci Series
+Print out the n-th entry in the series
 
-const arr = [];
-arr[3] = "Hello there";
-console.log(arr)[(null, null, null, "Hello there")];
+Example of the first 10 entries:
+[0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
 
-4 for loops
-  1. Assembles the top row of our solution 1, 2, 3
-  2. Responsible for the row on the right hand size  4,5
-  3. Responsible for the row on the bottom 6, 7
-  4. Responsible for the left side 8
-  the while loop runs and assembles 9
+fib(4) === 3
 */
+
+function fibSeries(n) {
+  //Linear Runtime
+  const result = [0, 1];
+  for (let i = 2; i <= n; i++) {
+    const a = result[i - 1];
+    const b = result[i - 2];
+    result.push(a + b);
+  }
+  return result[n];
+}
+
+fibSeries(5);
+
+/*
+Recursive Solution  
+
+We only return n if it's 0 or 1
+fib(0) => 0
+fib(1) => 1
+
+Exponential Time (RED FLAG)
+  For every increase of n we will get a dramatic increase in the number of function calls
+How can we alter this recursive solution so it won't have a runtime of exponential time?
+  We have to implement memoization. 
+Memoization
+  Store the arguments of each function call along with the result. 
+  If the function is called again with the same arguments, return the precomputed result
+  In comparison to running the function again. 
+
+*/
+
+function fib(n) {  
+  if (n < 2) {   
+    return n;  
+  }
+  return fib(n - 1) + fib(n - 2);
+}
+
+fib(6);
+
+
