@@ -697,17 +697,42 @@ How can we alter this recursive solution so it won't have a runtime of exponenti
 Memoization
   Store the arguments of each function call along with the result. 
   If the function is called again with the same arguments, return the precomputed result
-  In comparison to running the function again. 
+  This dramatically improves the runspeed of the function.
+Generic Memoization Function
+  Slow Fib Function => Memoizer => Fast Memoized Function
+  Calling a function with a function that returns a function
 
-*/
+cache
+  Stores all of our calls to the fast version of our function
+...args
+  In order to use our memoize function with any slow function that can have multiple arguments with use this ES2015 syntax.
+  Takes all the arguments and assigns it to an Array called args
+.apply()
+  The object to be used as the this object.
+  Calls the function, substituting the specified object for the this value of the function, and the specified array for the args of the function.
+  */
 
-function fib(n) {  
-  if (n < 2) {   
-    return n;  
-  }
-  return fib(n - 1) + fib(n - 2);
+function memoize(fn) {
+  const cache = {};
+  return function () {
+    //This anon func is same as const fib. Receives the argument(s) intended for the slowFib function.
+    if (cache[args]) {
+      //Checking if the func has been called with these particular set of args before
+      return cache[args]; //If we have return it and don't do anything else.
+    }
+    const result = fn.apply(this, args);
+    cache[args] = result;
+    return result;
+  };
 }
 
-fib(6);
+function fib(n) {
+  if (n < 2) {
+    return n;
+  }
+  return fib(n - 1) + fib(n - 2); //These fib are a reference to the memoized version
+}
 
+fib = memoize(fib);
 
+slowFib(6);
