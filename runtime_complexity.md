@@ -80,7 +80,6 @@ This is also known as "The handshake problem"
 If you add a "single" element to a collection, the processing power required doubles.
 Worst case
 
-
 # Big "O" Notation / Runtime Complexity
 This is another way of referencing runtime complexity
 Determining the efficiency of our solution. 
@@ -128,6 +127,20 @@ Every sort operation can be assumed to be O(n*log(n)) runtime.
 Searching through a sorted array
 
 # Space Complexity
+Runtime complexity refers to performance
+Space complexity is similar to runtime complexity but is a reference to how much more RAM is required by doubling the problem set. 
+We can apply the same rules to both runtime and space complexity. 
+`Reversing a String would be an example`
+For every additional character that we added into our input set we had one additional character that we needed to return in the output set of data. The amount of memory that we have spent was linear. 
 
-Similar to performance complexity
-This is a reference to how much more RAM is required by doubling the problem set?
+# Quadratic Runtime For Space Complexity
+`Steps Algorithm`
+For each increment of the steps argument we had to print out a set number of additional items in the result set. Not only we had to process more data but we had to iterate more than once, and our results set had significantly more entries inside of it for every record that was added in. 
+
+`2` => `4 elements in memory`
+`3` => `9 elements in memory`
+`4` => `16 elements in memory`
+
+# Note
+Runtime Complexity and Space Complexity are not always identical. 
+They are often very different. 
