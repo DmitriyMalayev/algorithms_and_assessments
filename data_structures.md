@@ -11,6 +11,7 @@ Make sure to first think about the data structure you should use to solve the pr
 
 A container where records of data enter on one end and exit on the other.  
 Sometimes we can use a JavaScript Array to represent a Queue
+`Whenever we make a Queue we disable all methods other than unshift (add an element to the beginning of an array) and pop (remove an element from the end of the array). The reason can be to improve performance, as well as differentiate it from a simple Array.`
 
 # Enqueuing === Adding a Record
 
@@ -39,6 +40,41 @@ q.add(1);
 
 //Remove a record from a queue
 q.remove();
+
+/*
+Create a queue Data Structure. The Queue should be a class with methods "add" and "remove". 
+Adding to the Queue should store an element until it is removed. 
+const q = new Queue()
+q.add(1)
+q.remove() //returns 1
+*/
+
+class Queue {
+  constructor() {
+    this.data = []; //A constructor is called when a new instance of the class is created. this.data doesn't have to be called data.
+  }
+
+  add(record){
+    this.data.unshift(record)
+  }
+
+  remove(){
+    return this.data.pop()
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```
 
 `.push`

@@ -737,7 +737,28 @@ fib = memoize(fib);
 
 slowFib(6);
 
+/*
+Create a queue Data Structure. The Queue should be a class with methods "add" and "remove". 
+Adding to the Queue should store an element until it is removed. 
+const q = new Queue()
+q.add(1)
+q.remove() //returns 1
+*/
 
+class Queue {
+  constructor() {
+    this.data = []; //A constructor is called when a new instance of the class is created. this.data doesn't have to be called data.
+  }
+
+  add(record) {
+    this.data.unshift(record);
+  }
+
+  remove() {
+    return this.data.pop();
+  }
+}
+newQueue = Queue.new();
 
 /*
 .slice
