@@ -736,3 +736,27 @@ function fib(n) {
 fib = memoize(fib);
 
 slowFib(6);
+
+/*
+
+
+/*
+.slice
+Returns a copy of a section of an array. 
+For both start and end, a negative index can be used to indicate an offset from the end of the array. 
+For example, -2 refers to the second to last element of the array.
+  @param start - The beginning index of the specified portion of the array. If start is undefined, then the slice begins at index 0.
+  @param end - The end index of the specified portion of the array. This is exclusive of the element at the index 'end'. If end is undefined, then the slice extends to the end of the array.
+
+.splice
+Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.
+  @param start — The zero-based location in the array from which to start removing elements.
+  @param deleteCount — The number of elements to remove.
+  @returns — An array containing the elements that were deleted.
+
+.shift
+Removes the first element from an array and returns it. If the array is empty, undefined is returned and the array is not modified.
+
+.unshift
+Inserts new elements at the start of an array, and returns the new length of the array.
+*/
