@@ -5,7 +5,6 @@ What is the area of n ?
 2 5  
 3 13
 */
-
 function shapeArea(n) {
   let area = 1;
   for (var i = 1; i < n; i++) {
@@ -13,6 +12,7 @@ function shapeArea(n) {
   }
   return area;
 }
+shapeArea(3);
 
 /*
 How many numbers are missing to have the correct sequence?
@@ -21,7 +21,7 @@ How many numbers are missing to have the correct sequence?
 3 => (4, 5, 7)
 */
 
-function makeArrayConsecutive2(statues) {
+function makeArrayConsecutive(statues) {
   statues.sort((a, b) => {
     return a - b;
   });
@@ -39,6 +39,7 @@ function makeArrayConsecutive2(statues) {
   }
   return count;
 }
+makeArrayConsecutive([6, 2, 3, 8]);
 
 /*
 Reverse The String
@@ -50,6 +51,7 @@ Call the Array method reverse. Join back into string.
 function reverseString(str) {
   return str.split("").reverse().join("");
 }
+reverseString("hello");
 
 /*
 Take the number convert it into a string and split each character into an array. Join back into string.
@@ -63,6 +65,7 @@ function reverseInteger(n) {
   let reversedString = n.toString().split("").reverse().join("");
   return parseInt(reversedString * Math.sign(n));
 }
+reverseInteger(123);
 
 /*
 Check if the words are the same if reversed.

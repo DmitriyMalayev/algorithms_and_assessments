@@ -54,27 +54,14 @@ class Queue {
     this.data = []; //A constructor is called when a new instance of the class is created. this.data doesn't have to be called data.
   }
 
-  add(record){
-    this.data.unshift(record)
+  add(record) {
+    this.data.unshift(record);
   }
 
-  remove(){
-    return this.data.pop()
+  remove() {
+    return this.data.pop();
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 ```
 
 `.push`
