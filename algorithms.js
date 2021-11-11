@@ -93,7 +93,7 @@ function palindromeTest3(str) {
   let flip = end.split("").reverse.join("");
   return start === flip;
 }
-palindromeTest("Hello There")
+palindromeTest("Hello There");
 palindromeTest2("Hello There");
 palindromeTest3("Hello There");
 
@@ -130,12 +130,10 @@ function maxCharacters(str) {
   return maxChar;
 }
 
-maxCharacters("abbcccddddeeeeefff")
-
+maxCharacters("abbcccddddeeeeefff");
 
 //Print integers 1 to N but print "fizz" if multiple of 3, "buzz" if multiple of 5 and "fizzbuzz" if multiple of 15
 // Modulo Operator (%) returns the remainder
-
 
 function fizzBuzzer(n) {
   for (let i = 0; i <= n; i++) {
@@ -152,8 +150,7 @@ function fizzBuzzer(n) {
   }
 }
 
-fizzBuzzer(8)
-
+fizzBuzzer(8);
 
 /*
 Given an array and chunk size, divide the array into many subarrays where each subarray is of length size
@@ -217,7 +214,6 @@ function chunk2(array, size) {
 }
 chunk2([1, 2, 3, 4, 5], 2);
 
-
 /*
 Check if all of the characters are the same in both strings
 
@@ -233,7 +229,7 @@ function anagramChecker(string1, string2) {
   return helperString(string1) === helperString(string2);
 }
 
-anagramChecker("Hello", "hello")
+anagramChecker("Hello", "hello");
 
 function helperString(str) {
   return str.replace(/[^\w]/g, "").toLowerCase().split("").sort().join("");
@@ -253,7 +249,7 @@ function anagramChecker2(string1, string2) {
   }
   return true;
 }
-anagramChecker2("earth", "heart")
+anagramChecker2("earth", "heart");
 
 function buildCharacterMap(string) {
   const charMap = {};
@@ -279,9 +275,7 @@ function capitalizedWords1(str) {
   }
   return words.join(" "); //Add a space between each word when joining
 }
-capitalizedWords1("hello everyone")
-
-
+capitalizedWords1("hello everyone");
 
 /*
 Create "result" in which the first character of the input string is capitalized
@@ -304,7 +298,7 @@ function capitalizedWords2(str) {
   return result;
 }
 
-capitalizedWords2("are you prepared for algorithms?")
+capitalizedWords2("are you prepared for algorithms?");
 
 // Sum an Array of numbers
 function simpleArraySum(ar) {
@@ -312,9 +306,6 @@ function simpleArraySum(ar) {
   for (let n of ar) sum += n;
   return sum;
 }
-
-
-
 
 function simpleArraySum2(ar) {
   const newValue = ar.reduce((accumulator, currentValue) => {
@@ -767,8 +758,28 @@ fib = memoize(fib);
 slowFib(6);
 
 /*
+.slice
+Returns a copy of a section of an array. 
+For both start and end, a negative index can be used to indicate an offset from the end of the array. 
+For example, -2 refers to the second to last element of the array.
+  @param start - The beginning index of the specified portion of the array. If start is undefined, then the slice begins at index 0.
+  @param end - The end index of the specified portion of the array. This is exclusive of the element at the index 'end'. If end is undefined, then the slice extends to the end of the array.
+
+.splice
+Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.
+  @param start — The zero-based location in the array from which to start removing elements.
+  @param deleteCount — The number of elements to remove.
+  @returns — An array containing the elements that were deleted.
+
+.shift
+Removes the first element from an array and returns it. If the array is empty, undefined is returned and the array is not modified.
+
+.unshift
+Inserts new elements at the start of an array, and returns the new length of the array.
+
 Create a queue Data Structure. The Queue should be a class with methods "add" and "remove". 
 Adding to the Queue should store an element until it is removed. 
+
 const q = new Queue()
 q.add(1)
 q.remove() //returns 1
@@ -790,22 +801,58 @@ class Queue {
 newQueue = Queue.new();
 
 /*
-.slice
-Returns a copy of a section of an array. 
-For both start and end, a negative index can be used to indicate an offset from the end of the array. 
-For example, -2 refers to the second to last element of the array.
-  @param start - The beginning index of the specified portion of the array. If start is undefined, then the slice begins at index 0.
-  @param end - The end index of the specified portion of the array. This is exclusive of the element at the index 'end'. If end is undefined, then the slice extends to the end of the array.
+weave function
+  Receives two queues as arguments and combines the contents of each into a new, third queue.
+  The third queue should contains the alternating content of the two queues. 
+  The function should handle queues of different length without inserting "undefined" into the new one. 
+  Do not access the array inside of any queue, only use the .add(), .remove(), and .peek() functions
 
-.splice
-Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.
-  @param start — The zero-based location in the array from which to start removing elements.
-  @param deleteCount — The number of elements to remove.
-  @returns — An array containing the elements that were deleted.
+  const queueOne = new Queue()
+  queueOne.add(1)
+  queueOne.add(2)
 
-.shift
-Removes the first element from an array and returns it. If the array is empty, undefined is returned and the array is not modified.
+  const queueTwo = new Queue()
+  
+Second
+  Implement a "peek" method in this Queue class. 
+  Peek should return the last element (the next one to be returned) from the queue without removing it. 
+ */
 
-.unshift
-Inserts new elements at the start of an array, and returns the new length of the array.
-*/
+
+class secondQueue {
+  constructor() {
+    this.data = []
+  }
+
+  add(record) {
+    this.data.unshift(record)
+  }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
