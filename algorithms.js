@@ -93,6 +93,9 @@ function palindromeTest3(str) {
   let flip = end.split("").reverse.join("");
   return start === flip;
 }
+palindromeTest("Hello There")
+palindromeTest2("Hello There");
+palindromeTest3("Hello There");
 
 /*
 Return the character that is most commonly used
@@ -127,7 +130,12 @@ function maxCharacters(str) {
   return maxChar;
 }
 
+maxCharacters("abbcccddddeeeeefff")
+
+
+//Print integers 1 to N but print "fizz" if multiple of 3, "buzz" if multiple of 5 and "fizzbuzz" if multiple of 15
 // Modulo Operator (%) returns the remainder
+
 
 function fizzBuzzer(n) {
   for (let i = 0; i <= n; i++) {
@@ -143,6 +151,9 @@ function fizzBuzzer(n) {
     }
   }
 }
+
+fizzBuzzer(8)
+
 
 /*
 Given an array and chunk size, divide the array into many subarrays where each subarray is of length size
@@ -185,7 +196,7 @@ function chunk1(array, size) {
   }
   return chunked;
 }
-
+chunk1([1, 2, 3, 4], 2);
 /*
 Create an empty chunked Array
 Create an "index" that starts at 0
@@ -204,8 +215,12 @@ function chunk2(array, size) {
   }
   return chunked;
 }
+chunk2([1, 2, 3, 4, 5], 2);
+
 
 /*
+Check if all of the characters are the same in both strings
+
 slice method (non destructive, creates a copy)
 const letters = ["a", "b", "c", "d", "e"];
 letters.slice(0, 3)
@@ -217,6 +232,8 @@ Select the character at the first index up to but not including the third index.
 function anagramChecker(string1, string2) {
   return helperString(string1) === helperString(string2);
 }
+
+anagramChecker("Hello", "hello")
 
 function helperString(str) {
   return str.replace(/[^\w]/g, "").toLowerCase().split("").sort().join("");
@@ -236,6 +253,7 @@ function anagramChecker2(string1, string2) {
   }
   return true;
 }
+anagramChecker2("earth", "heart")
 
 function buildCharacterMap(string) {
   const charMap = {};
@@ -261,6 +279,9 @@ function capitalizedWords1(str) {
   }
   return words.join(" "); //Add a space between each word when joining
 }
+capitalizedWords1("hello everyone")
+
+
 
 /*
 Create "result" in which the first character of the input string is capitalized
@@ -283,12 +304,17 @@ function capitalizedWords2(str) {
   return result;
 }
 
+capitalizedWords2("are you prepared for algorithms?")
+
 // Sum an Array of numbers
 function simpleArraySum(ar) {
   let sum = 0;
   for (let n of ar) sum += n;
   return sum;
 }
+
+
+
 
 function simpleArraySum2(ar) {
   const newValue = ar.reduce((accumulator, currentValue) => {
