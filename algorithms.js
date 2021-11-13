@@ -755,8 +755,6 @@ function fib(n) {
 
 fib = memoize(fib);
 
-slowFib(6);
-
 /*
 .slice
 Returns a copy of a section of an array. 
@@ -770,6 +768,12 @@ Removes elements from an array and, if necessary, inserts new elements in their 
   @param start — The zero-based location in the array from which to start removing elements.
   @param deleteCount — The number of elements to remove.
   @returns — An array containing the elements that were deleted.
+
+.push
+Appends new elements to the end of an array, and returns the new length of the array.
+
+.pop
+Removes the last element from an array and returns it. If the array is empty, undefined is returned and the array is not modified.
 
 .shift
 Removes the first element from an array and returns it. If the array is empty, undefined is returned and the array is not modified.
@@ -853,8 +857,6 @@ class Queue {
   }
 }
 
-module.exports = Queue;
-
 /*
 Directions
  1) Complete the task in weave/queue.js
@@ -890,8 +892,3 @@ function weave(sourceOne, sourceTwo) {
   }
   return newQueue;
 }
-
-module.exports = weave;
-
-
-
