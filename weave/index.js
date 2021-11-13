@@ -32,9 +32,8 @@ function weave(sourceOne, sourceTwo) {
     if (sourceTwo.peek()) {
       newQueue.add(sourceTwo.remove());
     }
-   
   }
-   return newQueue;
+  return newQueue;
 }
 
 module.exports = weave;

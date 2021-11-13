@@ -818,41 +818,12 @@ Second
   Peek should return the last element (the next one to be returned) from the queue without removing it. 
  */
 
-
 class secondQueue {
   constructor() {
-    this.data = []
+    this.data = [];
   }
 
   add(record) {
-    this.data.unshift(record)
+    this.data.unshift(record);
   }
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
