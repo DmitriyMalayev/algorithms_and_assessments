@@ -892,3 +892,41 @@ function weave(sourceOne, sourceTwo) {
   }
   return newQueue;
 }
+
+/*
+Stacks
+  Similar to Queues 
+  Pushing
+    Adding a record to an existing stack
+  Poping 
+    Removing a record from an existing stack
+  Peeking
+    Return the top record without popping it
+    
+Stacks vs. Queues
+  The order of how things are added or removed is different
+  Queues
+    First In First Out
+  Stacks
+    First In Last Out
+*/
+
+class Stack {
+  constructor() {
+    this.data = [];
+  }
+
+  push(record) {
+    this.data.push(record);
+  }
+
+  pop() {
+    return this.data.pop();
+  }
+
+  peek() {
+    return this.data[this.data.length - 1];
+  }
+}
+
+
