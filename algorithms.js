@@ -334,7 +334,7 @@ Write a function that accepts a positive number N.
 The function should console.log() a step shape with N levels using the # character.  
 Make sure the step has spaces on the right hand side!
 
-Examples
+*EXAMPLE*s
   steps(2)
       '# '
       '##'
@@ -457,19 +457,20 @@ function printNumber2(num, dec = 1) {
 printNumber2(10);
 
 /*
- PYRAMID
+PYRAMID
 
     c0 c1 c2 c3 c4
 r0  _  _  #  _  _ 
 r1  _  #  #  #  _ 
 r2  #  #  #  #  #
 
-Directions
+*Directions*
  Write a function that accepts a positive number N.
  The function should console log a pyramid shape
  with N levels using the # character.  Make sure the
  pyramid has spaces on both the left *and* right hand sides
- --- Examples
+
+ *EXAMPLE*
    pyramid(1)
        '#'
    pyramid(2)
@@ -593,7 +594,7 @@ howManyVowels2("words");
 
 /* 
 Write a function that accepts an integer N and returns a NxN spiral matrix.
-EXAMPLES 
+*EXAMPLE*S 
   matrix(2)
     [[1, 2],
     [4, 3]]
@@ -684,7 +685,7 @@ spiralMatrix(6);
 Fibonacci Series
 Print out the n-th entry in the series
 
-Example of the first 10 entries:
+*EXAMPLE of the first 10 entries*
 [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
 
 fib(4) === 3
@@ -759,7 +760,7 @@ fib = memoize(fib);
 .slice
 Returns a copy of a section of an array. 
 For both start and end, a negative index can be used to indicate an offset from the end of the array. 
-For example, -2 refers to the second to last element of the array.
+For *EXAMPLE*, -2 refers to the second to last element of the array.
   @param start - The beginning index of the specified portion of the array. If start is undefined, then the slice begins at index 0.
   @param end - The end index of the specified portion of the array. This is exclusive of the element at the index 'end'. If end is undefined, then the slice extends to the end of the array.
 
@@ -787,7 +788,8 @@ Adding to the Queue should store an element until it is removed.
 const q = new Queue()
 q.add(1)
 q.remove() //returns 1
-*/
+
+*EXAMPLE*
 
 class Queue {
   constructor() {
@@ -804,7 +806,7 @@ class Queue {
 }
 newQueue = Queue.new();
 
-/*
+
 weave function
   Receives two queues as arguments and combines the contents of each into a new, third queue.
   The third queue should contains the alternating content of the two queues. 
@@ -820,7 +822,8 @@ weave function
 Second
   Implement a "peek" method in this Queue class. 
   Peek should return the last element (the next one to be returned) from the queue without removing it. 
- */
+ 
+*EXAMPLE*
 
 class secondQueue {
   constructor() {
@@ -831,12 +834,13 @@ class secondQueue {
     this.data.unshift(record);
   }
 }
-/* 
+
+*EXAMPLE*
+
 Implement a 'peek' method in this Queue class.
 Peek should return the last element (the next
 one to be returned) from the queue *without*
 removing it. 
-*/
 
 class Queue {
   constructor() {
@@ -852,18 +856,16 @@ class Queue {
   }
 
   peek() {
-    return this.data[this.data.length - 1];
-    //accessing the last item of the array
+    return this.data[this.data.length - 1];  //accessing the last item of the array
   }
 }
 
-/*
 Directions
  1) Complete the task in weave/queue.js
  2) Implement the 'weave' function.  Weave receives two queues as arguments and combines the contents of each into a new, third queue.
  The third queue should contain the *alterating* content of the two queues.  The function should handle queues of different lengths without inserting 'undefined' into the new one.
  
- *Do not* access the array inside of any queue, only use the 'add', 'remove', and 'peek' functions.
+ !Do not access the array inside of any queue, only use the 'add', 'remove', and 'peek' functions.
     const queueOne = new Queue();
       queueOne.add(1);
       queueOne.add(2);
@@ -875,16 +877,16 @@ Directions
       q.remove() // 'Hi'
       q.remove() // 2
       q.remove() // 'There'
-*/
+
+
+*EXAMPLE*
 const Queue = require("./queue");
 
 function weave(sourceOne, sourceTwo) {
-  const newQueue = new Queue();
-  //while loop to check while it's not undefined it should continue iterating
+  const newQueue = new Queue();    //"while loop to check while it's not undefined it should continue iterating"
   while (sourceOne.peek() || sourceTwo.peek()) {
-    if (sourceOne.peek()) {
-      //checking again because one of the sources can still have elements
-      newQueue.add(sourceOne.remove()); //remove is using the pop method to return the last element and we use that element to add to the queue.
+    if (sourceOne.peek()) {     //checking again because one of the sources can still have elements
+      newQueue.add(sourceOne.remove());   //remove is using the pop method to return the last element and we use that element to add to the queue.
     }
     if (sourceTwo.peek()) {
       newQueue.add(sourceTwo.remove());
@@ -893,7 +895,6 @@ function weave(sourceOne, sourceTwo) {
   return newQueue;
 }
 
-/*
 Stacks
   Similar to Queues 
   Pushing
@@ -909,7 +910,8 @@ Stacks vs. Queues
     First In First Out
   Stacks
     First In Last Out
-*/
+
+*EXAMPLE*
 
 class Stack {
   constructor() {
@@ -928,5 +930,38 @@ class Stack {
     return this.data[this.data.length - 1];
   }
 }
+ 
+*EXAMPLE*
+Queue from Stack (qfroms)
+
+Implement a Queue Data Structure using two stacks.
+Do not create an array inside of the Queue class.
+Queue should implement the methods "add", "remove", and "peek".
+
+const q = new Queue()
+q.add(1)
+q.add(2)
+
+q.peek()  //returns 1 
+q.remove()  //returns 1
+q.remove()  //returns 2
+*/
+
+const Stack = require("./stack")
+
+class Queue {
+  constructor() {
+    this.first = new Stack()
+    this.second = new Stack()
+  }
+
+}
+
+
+
+
+
+
+
 
 
