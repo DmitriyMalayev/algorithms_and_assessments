@@ -12,6 +12,20 @@
     q.remove(); // returns 2
 */
 
+/*
+Stacks => FILO (First In Last Out)
+Queues => FIFO (First In First Out)
+
+Remove Method
+   For every record that we pop from the first stack we will push it to the second stack
+   We then use our peek method to check if there are any records left that we can manipulate. 
+   Then we call the pop method on the second stack 
+   Before returning the record we have to restore everything back to the first stack in case 
+Peek Method
+  Similar to the remove method with the exception that instead of popping the second stack we will just peek at it. 
+*/ 
+
+
 const Stack = require("./stack");
 
 class Queue {
@@ -28,10 +42,10 @@ class Queue {
     while (this.first.peek()) {
       this.second.push(this.first.pop());
     }
-    const record = this.second.pop(); //We are not returning this yet because we first need to restore it to original version
+    const record = this.second.pop();
 
     while (this.second.peek()) {
-      this.first.push(this.second.pop);
+      this.first.push(this.second.pop());
     }
     return record;
   }
