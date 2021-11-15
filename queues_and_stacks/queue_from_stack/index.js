@@ -10,9 +10,7 @@
     q.peek();  // returns 1
     q.remove(); // returns 1
     q.remove(); // returns 2
-*/
 
-/*
 Stacks => FILO (First In Last Out)
 Queues => FIFO (First In First Out)
 
