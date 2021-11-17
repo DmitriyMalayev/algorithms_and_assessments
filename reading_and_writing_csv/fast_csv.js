@@ -1,0 +1,5 @@
+const fastcsv = require("fast-csv")
+const fs = require("fs")
+const ws = fs.createWriteStream("out.csv")
+fastcsv.write(names.csv, { headers: true })
+.pipe(ws)
