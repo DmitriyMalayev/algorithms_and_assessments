@@ -78,7 +78,30 @@ Note
   Non single letter flags must be passed in as --flag 
   Such as node myapp.js --time 
 
-SUMMARY
+SUMMARY OF ELEMENT USED IN THE PROGRAM
 
+argv
+  This is the modified process.argv which we have configured with yargs
+command()
+  Used to add commands, their descriptions and options which are specific to these commands only
+  For example, in the above code "lyr" is the command and "-y" is lyr specific option
+  node myapp.js lyr -y 2016
+option()
+  Used to add global options (flags) which can be accessed by all commands without any command. 
+help()
+  Used to display a help dialogue when --help option is encountered 
+  Contains a description of all commands and options available. 
+alias()
+  Provides an alias name to an option
+  --help and -h triggers the help dialogue 
+
+
+
+npm init -y
+  generates an empty npm project without going through an interactive process. 
+  -y  (means yes)
+
+npm install csvtojson
+npm install json2csv --save
 
 */
