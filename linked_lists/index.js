@@ -54,6 +54,35 @@ class LinkedList {
       node = node.next;
     }
   }
+  clear() {
+    this.head = null;
+  }
+  removeFirst() {
+    if (!this.head) {
+      return;
+    }
+    this.head = this.head.next;
+  }
+  removeLast() {
+    if (!this.head) {
+      // checking there aren't any nodes
+      return;
+    }
+    if (!this.head.next) {
+      //checking if there is only one node
+      this.head = null; //removed
+      return;
+    }
+    let previous = this.head;
+    let node = this.head.next;
+
+    while (node.next) {
+      //checking if there is an additional element to iterate through. If null means end of list. 
+      previous = node;  
+      node = node.next;  //same as argument but assigns it
+    }
+    previous.next = null 
+  }
 }
 
 module.exports = { Node, LinkedList };
