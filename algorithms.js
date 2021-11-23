@@ -1081,3 +1081,40 @@ Directions
 
 const list = newLinkedList();
 list.insertFirst("Hi there"); //List has one node
+
+/*
+Function => size
+Arguments => none
+Returns => integer
+  Returns the number of nodes in the linked list
+*/
+
+const list = newLinkedList();
+list.insertFirst("a");
+list.insertFirst("b");
+list.insertFirst("c");
+list.size(); // 3
+
+/*
+Function => getFirst
+Arguments => none
+Returns => Node
+  Returns the first node of the linked list
+*/
+
+const list = newLinkedList();
+list.insertFirst("a");
+list.insertFirst("b");
+list.getFirst(); // returns node instance with data "a"
+
+/*
+Function => getLast
+Arguments => none
+Returns => Node
+  Returns the last node of the linked list
+*/
+
+const list = newLinkedList();
+list.insertFirst("a");
+list.insertFirst("b");
+list.getLast(); // returns node instance with data "b"
