@@ -22,9 +22,49 @@ class LinkedList {
     this.head = new Node(data, this.head); //any existing node can be passed as a second argument
     //repairing the head reference
   }
+
+  size() {
+    let counter = 0;
+    let node = this.head;
+    //Reference to the head node(first node) inside of our LinkedList
+
+    while (node) {
+      counter++;
+      node = node.next();
+    }
+    return counter;
+  }
+
+  getFirst() {
+    return this.head;
+  }
+
+  getLast() {
+    if (!this.head) {
+      // checking if there are any nodes
+      return null;
+    }
+
+    let node = this.head;
+    while (node) {
+      if (!node.next) {
+        // if null, it's the last node
+        return node;
+      }
+      node = node.next;
+    }
+  }
 }
 
-// const list = new LinkedList()
-// list.head = new Node(10)
-
 module.exports = { Node, LinkedList };
+
+/*
+size()
+    If the LinkedList does not have a head node assigned to it, 
+      then the while loop is going to check to see if node is a truthy or falsy value, 
+      if it's falsy value then the while loop will not run.
+    If it's a truthy value, the while loop runs and increments the counter variable because it has found 1 node.
+    Then it checks the current node and it's next property, it will either be another node or the value null. 
+    If it's truthy the while loop runs again up until it's a falsey value. 
+
+*/
