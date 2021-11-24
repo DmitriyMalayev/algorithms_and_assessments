@@ -1,0 +1,9 @@
+{
+  "head": {
+    "data": 15,
+    "next": {
+      "data": 5,
+      "next": null
+    }
+  }
+}
