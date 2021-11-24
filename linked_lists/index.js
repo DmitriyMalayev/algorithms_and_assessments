@@ -77,11 +77,67 @@ class LinkedList {
     let node = this.head.next;
 
     while (node.next) {
-      //checking if there is an additional element to iterate through. If null means end of list. 
-      previous = node;  
-      node = node.next;  //same as argument but assigns it
+      //checking if there is an additional element to iterate through. If null means end of list.
+      previous = node;
+      node = node.next; //same as argument but assigns it
     }
-    previous.next = null 
+    previous.next = null;
+  }
+
+  insertLast(data) {
+    const last = this.getLast();
+    if (last) {
+      // Also checks for presence of nodes
+      // Creating, setting and inserting a new Node to the end of the chain.
+      last.next = new Node(data);
+    } else {
+      this.head = new Node(data);
+    }
+  }
+
+  getAt(index) {
+    //skipping the additional check for presence of nodes because the rest of the code checks it.
+    let counter = 0;
+    let node = this.head;
+    while (node) {
+      //if there is a node at this.head this while loop will run
+      if (counter === index) {
+        //if true, means we found the index we're looking for
+        return node;
+      }
+      counter++; //increments by one
+      node = node.next; //sets the node variable to the next node in the chain. If it's null, the while loop will exit.
+    }
+    return null;
+  }
+
+  removeAt(index) {
+    if (!this.head) {
+      //checking for presence of any nodes
+      return;
+    }
+    if (index === 0) {
+      //if we're trying to remove the head.
+      this.head = this.head.next; //Assigns the head of the linked list to the next node. It will be null if there isn't a next node.
+      return;
+    }
+    const previous = this.getAt(index - 1);
+    if (!previous || !previous.next) {
+      //checks for presence and prevent crashing if called with out of bounds index or if the node is the last one
+      return;
+    }
+    previous.next = previous.next.next; //skips the index
+  }
+  insertAt(data, index) {
+    if (!this.head) {
+      this.head = new Node(data);
+    }
+    if (index === 0) {
+      this.head = new Node(data, this.head); //The second argument is used as the next reference
+    }
+    const previous = this.getAt(index - 1) || this.getLast(); //If the first part returns a falsy value we want previous to be set to the last node of the chain
+    const node = new Node(data, previous.next); //created node and put in the middle
+    previous.next = node;
   }
 }
 
