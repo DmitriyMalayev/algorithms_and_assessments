@@ -1,32 +1,24 @@
-/* Implement classes Node and Linked Lists
- See 'directions' document
- 
- null => specifically set to nothing
- undefined => property has not been set 
-*/
 class Node {
   constructor(data, next = null) {
     this.data = data; //can be of any data type
     this.next = next; //reference to the next node along the chain. it's an optional argument.
   }
 }
-
 class LinkedList {
   constructor() {
     this.head = null; // Initialized with no head node associated with it.
-    //The head node is the very first node in a LinkedList. The only property that will be assigned to a LinkedList.
-    //The tail node is the very end node in a LinkedList. It does not have a reference to any other node.
   }
   insertFirst(data) {
-    // insert method, not an override method. insertFirst is called with some data and it's up to us to create a new Node.
     this.head = new Node(data, this.head); //any existing node can be passed as a second argument
-    //repairing the head reference
+  }
+
+  insertFirstAlternative(data) {
+    this.insertAt(data, 0);
   }
 
   size() {
     let counter = 0;
     let node = this.head;
-    //Reference to the head node(first node) inside of our LinkedList
 
     while (node) {
       counter++;
@@ -39,21 +31,28 @@ class LinkedList {
     return this.head;
   }
 
+  getFirstAlternative() {
+    return this.getAt(0)
+  }
+
   getLast() {
     if (!this.head) {
-      // checking if there are any nodes
       return null;
     }
 
     let node = this.head;
     while (node) {
       if (!node.next) {
-        // if null, it's the last node
         return node;
       }
       node = node.next;
     }
   }
+
+  getLastAlternative() {
+    return this.getAt(this.last -1)
+  }
+
   clear() {
     this.head = null;
   }
@@ -65,7 +64,6 @@ class LinkedList {
   }
   removeLast() {
     if (!this.head) {
-      // checking there aren't any nodes
       return;
     }
     if (!this.head.next) {
@@ -77,7 +75,6 @@ class LinkedList {
     let node = this.head.next;
 
     while (node.next) {
-      //checking if there is an additional element to iterate through. If null means end of list.
       previous = node;
       node = node.next; //same as argument but assigns it
     }
@@ -87,8 +84,6 @@ class LinkedList {
   insertLast(data) {
     const last = this.getLast();
     if (last) {
-      // Also checks for presence of nodes
-      // Creating, setting and inserting a new Node to the end of the chain.
       last.next = new Node(data);
     } else {
       this.head = new Node(data);
@@ -96,13 +91,10 @@ class LinkedList {
   }
 
   getAt(index) {
-    //skipping the additional check for presence of nodes because the rest of the code checks it.
     let counter = 0;
     let node = this.head;
     while (node) {
-      //if there is a node at this.head this while loop will run
       if (counter === index) {
-        //if true, means we found the index we're looking for
         return node;
       }
       counter++; //increments by one
@@ -113,17 +105,14 @@ class LinkedList {
 
   removeAt(index) {
     if (!this.head) {
-      //checking for presence of any nodes
       return;
     }
     if (index === 0) {
-      //if we're trying to remove the head.
       this.head = this.head.next; //Assigns the head of the linked list to the next node. It will be null if there isn't a next node.
       return;
     }
     const previous = this.getAt(index - 1);
     if (!previous || !previous.next) {
-      //checks for presence and prevent crashing if called with out of bounds index or if the node is the last one
       return;
     }
     previous.next = previous.next.next; //skips the index
@@ -142,16 +131,3 @@ class LinkedList {
 }
 
 module.exports = { Node, LinkedList };
-
-
-
-
-/*
-size()
-    If the LinkedList does not have a head node assigned to it, 
-      then the while loop is going to check to see if node is a truthy or falsy value, 
-      if it's falsy value then the while loop will not run.
-    If it's a truthy value, the while loop runs and increments the counter variable because it has found 1 node.
-    Then it checks the current node and it's next property, it will either be another node or the value null. 
-    If it's truthy the while loop runs again up until it's a falsey value. 
-*/
