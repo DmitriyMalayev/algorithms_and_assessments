@@ -6,6 +6,9 @@ The node class should have methods 'add' and 'remove'.
 2) Create a tree class. The tree constructor should initialize a 'root' property to null.
 3) Implement 'traverseBF' and 'traverseDF' on the tree class.  
 Each method should accept a function that gets called with each element in the tree
+const node = new Node(1)
+const tree = new Tree()
+tree.root = node
 */
 
 class Node {
@@ -19,15 +22,16 @@ class Node {
   }
 
   remove(data) {
-    this.children = this.children.filter(node => {
+    this.children = this.children.filter(node => {    //reassigning result with filtering 
       return node.data !== data;
     });
   }
 }
 
 class Tree {
+  //we're not adding any insert or remove methods. This is because when we have a LinkedList class it was in charge of all of the elements inside of it. With a tree whenever we want to add or remove, we have to very precisely specify which node we want to be adding or removing elements from. We have to take both Node and Tree into account. 
   constructor() {
-    this.root = null;
+    this.root = null;  //root is the absolute head property 
   }
 
   traverseBF(fn) {
