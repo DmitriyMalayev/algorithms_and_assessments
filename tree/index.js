@@ -39,6 +39,7 @@ class Tree {
     //Breadth First Traversal
     const arr = [this.root]; //Taking the top node and adding it to an Array.
     while (arr.length) {
+      
       const node = arr.shift(); // while the array has something in it (truthy value) 0 is falsy
       // We want to add all of the children from the node and we can do that via the spread operator.
       // We cannot do arr.push(node.children) because this will cause a nested array.
