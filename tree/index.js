@@ -39,12 +39,12 @@ class Tree {
     //Breadth First Traversal
     const arr = [this.root]; //Taking the top node and adding it to an Array.
     while (arr.length) {
-      
       const node = arr.shift(); // while the array has something in it (truthy value) 0 is falsy
       // We want to add all of the children from the node and we can do that via the spread operator.
       // We cannot do arr.push(node.children) because this will cause a nested array.
       arr.push(...node.children);
       fn(node);
+      debugger;
     }
   }
 
@@ -58,6 +58,17 @@ class Tree {
     }
   }
 }
+
+const letters = [];
+const t = new Tree();
+t.root = new Node("a");
+t.root.add("b");
+t.root.add("c");
+t.root.children[0].add("d");
+
+t.traverseBF((node) => {
+  letters.push(node.data);
+});
 
 module.exports = { Tree, Node };
 
