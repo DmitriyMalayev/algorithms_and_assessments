@@ -314,6 +314,9 @@ function simpleArraySum2(ar) {
   return newValue;
 }
 
+simpleArraySum([1, 2, 3]);
+simpleArraySum2([1, 2, 3]);
+
 // Compare two sets of arrays and increment the higher number
 
 function compareTriplets(a, b) {
@@ -329,12 +332,13 @@ function compareTriplets(a, b) {
   return score;
 }
 
+compareTriplets([20], [30]);
+
 /*
 Write a function that accepts a positive number N.
 The function should console.log() a step shape with N levels using the # character.  
 Make sure the step has spaces on the right hand side!
 
-*EXAMPLE*s
   steps(2)
       '# '
       '##'
@@ -358,14 +362,10 @@ Guide
         Add a space to "stair"
     console.log(stair)
 
-
     c0 c1 c2
 r0  #  _  _
 r1  #  #  _ 
 r2  #  #  # 
-
-
-  
 */
 function stepsMaker1(n) {
   for (let row = 0; row < n; row++) {
@@ -382,10 +382,9 @@ function stepsMaker1(n) {
     console.log(stair); //This console.log is within the for loop because we want one console.log for each row we assembled.
   }
 }
+
 /*
 RECURSION SOLUTION
-
-
  IF (row === n) then we have hit the end of our problem
  IF the string "stair" has a (length === n) then we are at the end of a row
  IF the length of the string "stair" is less than or equal to the row number we're working on, we add a "#", otherwise add a space
@@ -423,14 +422,14 @@ function stepsMaker2(n, row = 0, stair = "") {
   const add = stair.length <= row ? "#" : " ";
   steps(n, row, stair + add);
 }
-
+stepsMaker1(3);
+stepsMaker2(5);
 /*
 RECURSION 
 Identify the minimum amount of information to represent your problem
 Give reasonable defaults to the bare minimum pieces of information
 Check the base case. Is there any work left to do? If not, return. 
 Do some work. Call your function again, making sure the arguments have changed in some way. 
-
 */
 
 function printNumber(num) {
@@ -453,24 +452,19 @@ function printNumber2(num, dec = 1) {
   printNumber(num - dec);
   //bare minimum amount of information needed to call our function again and progress towards base case.
 }
-
 printNumber2(10);
 
-/*
-PYRAMID
-
+/*PYRAMID
     c0 c1 c2 c3 c4
 r0  _  _  #  _  _ 
 r1  _  #  #  #  _ 
 r2  #  #  #  #  #
 
-*Directions*
  Write a function that accepts a positive number N.
  The function should console log a pyramid shape
  with N levels using the # character.  Make sure the
  pyramid has spaces on both the left *and* right hand sides
 
- *EXAMPLE*
    pyramid(1)
        '#'
    pyramid(2)
@@ -492,7 +486,6 @@ Solution 1
 
 Number of rows * 2  - 1 = Gives us the correct number of columns 
 n * 2 - 1 
-
 */
 function pyramidBuilder1(n) {
   const midpoint = Math.floor((2 * n - 1) / 2); //midpoint index
@@ -555,13 +548,12 @@ function pyramidBuilder2(n, row = 0, level = "") {
     add = " ";
   }
   //Make sure not to increment row because it still might be going through the loop.
-  pyramidBuilder2(n, row, level + add);
 }
+pyramidBuilder2(n, row, level + add);
 
 module.exports = pyramidBuilder1;
 
 // Return the number of vowels used in a string. "a e i o u"
-
 function howManyVowels(str) {
   let num = 0;
   let checker = ["a", "e", "i", "o", "u"];
@@ -572,7 +564,6 @@ function howManyVowels(str) {
   }
   return num;
 }
-
 howManyVowels("words");
 
 /*
@@ -584,7 +575,6 @@ match
 /i
   case incensitive
 */
-
 function howManyVowels2(str) {
   const matches = str.match(/aeiou/gi);
   return matches ? matches.length : 0;
@@ -594,7 +584,6 @@ howManyVowels2("words");
 
 /* 
 Write a function that accepts an integer N and returns a NxN spiral matrix.
-*EXAMPLE*S 
   matrix(2)
     [[1, 2],
     [4, 3]]
@@ -788,8 +777,7 @@ Adding to the Queue should store an element until it is removed.
 const q = new Queue()
 q.add(1)
 q.remove() //returns 1
-
-*EXAMPLE*
+*/
 
 class Queue {
   constructor() {
@@ -806,25 +794,24 @@ class Queue {
 }
 newQueue = Queue.new();
 
-
+/*
 weave function
   Receives two queues as arguments and combines the contents of each into a new, third queue.
   The third queue should contains the alternating content of the two queues. 
   The function should handle queues of different length without inserting "undefined" into the new one. 
   Do not access the array inside of any queue, only use the .add(), .remove(), and .peek() functions
+*/
+const queueOne = new Queue();
+queueOne.add(1);
+queueOne.add(2);
 
-  const queueOne = new Queue()
-  queueOne.add(1)
-  queueOne.add(2)
-
-  const queueTwo = new Queue()
-  
+const queueTwo = new Queue();
+/*  
 Second
   Implement a "peek" method in this Queue class. 
   Peek should return the last element (the next one to be returned) from the queue without removing it. 
  
-*EXAMPLE*
-
+*/
 class secondQueue {
   constructor() {
     this.data = [];
@@ -834,13 +821,12 @@ class secondQueue {
     this.data.unshift(record);
   }
 }
-
-*EXAMPLE*
-
+/*
 Implement a 'peek' method in this Queue class.
 Peek should return the last element (the next
 one to be returned) from the queue *without*
 removing it. 
+*/
 
 class Queue {
   constructor() {
@@ -856,37 +842,37 @@ class Queue {
   }
 
   peek() {
-    return this.data[this.data.length - 1];  //accessing the last item of the array
+    return this.data[this.data.length - 1]; //accessing the last item of the array
   }
 }
-
+/*
 Directions
  1) Complete the task in weave/queue.js
  2) Implement the 'weave' function.  Weave receives two queues as arguments and combines the contents of each into a new, third queue.
  The third queue should contain the *alterating* content of the two queues.  The function should handle queues of different lengths without inserting 'undefined' into the new one.
  
  !Do not access the array inside of any queue, only use the 'add', 'remove', and 'peek' functions.
-    const queueOne = new Queue();
-      queueOne.add(1);
-      queueOne.add(2);
-    const queueTwo = new Queue();
-      queueTwo.add('Hi');
-      queueTwo.add('There');
-    const q = weave(queueOne, queueTwo);
-      q.remove() // 1
-      q.remove() // 'Hi'
-      q.remove() // 2
-      q.remove() // 'There'
+ */
+const queueOne = new Queue();
+queueOne.add(1);
+queueOne.add(2);
+const queueTwo = new Queue();
+queueTwo.add("Hi");
+queueTwo.add("There");
+const q = weave(queueOne, queueTwo);
+q.remove(); // 1
+q.remove(); // 'Hi'
+q.remove(); // 2
+q.remove(); // 'There'
 
-
-*EXAMPLE*
 const Queue = require("./queue");
 
 function weave(sourceOne, sourceTwo) {
-  const newQueue = new Queue();    //"while loop to check while it's not undefined it should continue iterating"
+  const newQueue = new Queue(); //"while loop to check while it's not undefined it should continue iterating"
   while (sourceOne.peek() || sourceTwo.peek()) {
-    if (sourceOne.peek()) {     //checking again because one of the sources can still have elements
-      newQueue.add(sourceOne.remove());   //remove is using the pop method to return the last element and we use that element to add to the queue.
+    if (sourceOne.peek()) {
+      //checking again because one of the sources can still have elements
+      newQueue.add(sourceOne.remove()); //remove is using the pop method to return the last element and we use that element to add to the queue.
     }
     if (sourceTwo.peek()) {
       newQueue.add(sourceTwo.remove());
@@ -894,7 +880,7 @@ function weave(sourceOne, sourceTwo) {
   }
   return newQueue;
 }
-
+/*
 Stacks
   Similar to Queues 
   Pushing
@@ -910,9 +896,7 @@ Stacks vs. Queues
     First In First Out
   Stacks
     First In Last Out
-
-*EXAMPLE*
-
+*/
 class Stack {
   constructor() {
     this.data = [];
@@ -930,20 +914,16 @@ class Stack {
     return this.data[this.data.length - 1];
   }
 }
-
-
 /* 
  
 *EXAMPLE*
 Queue from Stack (qfroms)
-
 
 Implement a Queue datastructure using two stacks.
  *Do not* create an array inside of the 'Queue' class.
  Queue should implement the methods 'add', 'remove', and 'peek'.
  For a reminder on what each method does, look back
  at the Queue exercise.
- --- Examples
      const q = new Queue();
      q.add(1);
      q.add(2);
@@ -1012,7 +992,7 @@ class Queue {
 module.exports = Queue;
 
 /*
-TODO: Linked Lists
+Linked Lists
 A linked list is an ordered collection of data. 
   The collection contains a number of different nodes.  
   Each node contains some data, along with a reference to the next node. 
@@ -1027,16 +1007,18 @@ Tail Node
 Each node has two parts
   Data of any type
   Reference to the next node in the chain
-*/
-// TODO: Two Separate Node Lists Joined Together
+
+  */
+// Two Separate Node Lists Joined Together
 // data and node are property names by convention
 const nodeOne = { data: 123 };
 const nodeTwo = { data: 456 };
 
 nodeOne.next = nodeTwo;
 
-// TODO: Node Class API
 /*
+Node Class API
+
 Function => constructor 
 Arguments => (Data(required argument), Node(optional argument))
 Returns => Node
@@ -1054,17 +1036,17 @@ n1.next; //null
 const n2 = new Node("There", n1);
 n2.next; //returns n1
 
-// TODO: LinkedList Class API
 /*
-Function => constructor 
-Arguments => None
-Returns => LinkedList
-Directions 
-  Creates a class instance to represent a Linked List. 
-  When created, a Linked List should have no head node associated with it. 
-  The Linked List instance will have one property, 'head'. 
-  "head" is a reference to the first node of the linked list. 
-  "head" should be set to 'null' by default.
+LinkedList Class API
+  Function => constructor 
+  Arguments => None
+  Returns => LinkedList
+  Directions 
+    Creates a class instance to represent a Linked List. 
+    When created, a Linked List should have no head node associated with it. 
+    The Linked List instance will have one property, 'head'. 
+    "head" is a reference to the first node of the linked list. 
+    "head" should be set to 'null' by default.
 */
 const list = newLinkedList();
 list.head; //null
