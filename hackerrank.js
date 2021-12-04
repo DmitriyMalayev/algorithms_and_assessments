@@ -1,4 +1,3 @@
-/*
 function miniMaxSum(arr) {
   let minSlice = arr
     .sort((a, b) => {
@@ -23,14 +22,14 @@ miniMaxSum([7, 69, 2, 221, 8974]);
 console.log("07:05:45");
 
 
-Time Conversion
-Minutes and Seconds are always the same
-Converting Hours and Remove AM or PM for Military Time
+// Time Conversion
+// Minutes and Seconds are always the same
+// Converting Hours and Remove AM or PM for Military Time
 
-Cases
-  12 AM => 00
-  1 AM - 12 PM => No conversion neccessary 
-  1 PM - 11 PM => Original Hour + 12
+// Cases
+//   12 AM => 00
+//   1 AM - 12 PM => No conversion neccessary 
+//   1 PM - 11 PM => Original Hour + 12
 
 
 function timeConversion(s) {
@@ -53,7 +52,6 @@ function timeConversion(s) {
   return militaryHour + s.substring(2, 8);
 }
 
-*/
 
 let strings = ["ab", " ab", "abc"];
 let queries = ["ab", "abc", "bc"];
@@ -70,8 +68,6 @@ function matchingStrings(strings, queries) {
 }
 
 matchingStrings(strings, queries);
-
-
 
 
 function lonelyinteger(a) {
