@@ -1234,3 +1234,727 @@ class LinkedList {
 }
 
 module.exports = { Node, LinkedList };
+
+
+let arr = [1, 2, 3]
+arr.filter(element => {
+  return element !== 1;
+})
+//[2,3]
+//arr  [1,2,3] filter is non destrucive
+
+let arr2 = [1, 2, 3];
+arr2.filter((element) => {
+  return element !== 1;
+});
+
+//reassigning arr2 
+
+
+
+
+/* 
+Return the 'middle' node of a linked list.
+If the list has an even number of elements, return
+the node at the end of the first half of the list.
+  *Do not* use a counter variable, *do not* retrieve
+the size of the list, and only iterate
+through the list one time.
+Example
+  const l = new LinkedList();
+  l.insertLast('a')
+  l.insertLast('b')
+  l.insertLast('c')
+  midpoint(l); // returns { data: 'b' }
+Note
+  list.getFirst() === list.head
+
+*/
+function midpoint(list) {
+  let slow = list.getFirst();
+  let fast = list.getFirst();
+
+  while (fast.next && fast.next.next) {
+    //checking if both are defined
+    slow = slow.next; //move by 1
+    fast = fast.next.next; //move by 2
+  }
+
+  return slow; //returns when the while loop exits
+}
+
+
+midpoint()
+
+
+/* 
+Given a linked list, return true if the list is circular, false if it is not.
+  const l = new List();
+  const a = new Node('a');
+  const b = new Node('b');
+  const c = new Node('c');
+  
+  l.head = a;
+  a.next = b;
+  b.next = c;
+  c.next = b;
+  circular(l) // true
+*/
+
+function circular(list) { 
+  let slow = list.getFirst();  //same as list.head
+  let fast = list.getFirst();
+
+  while (fast.next && fast.next.next) {  //If either is pointing to null it's not circular. null is falsy.  
+    slow = slow.next;  //+1
+    fast = fast.next.next; //+2
+
+    if (slow === fast) {  //if both are pointing to the same exact node. We're not checking the data contents. 
+      return true;
+    }
+  }
+
+  return false;
+}
+
+circular()
+
+
+/*
+Given a linked list and integer n, return the element n spaces from the last node in the list.  
+Do not call the 'size' method of the linked list. (size - n then call getAt(n)) 
+Assume that n will always be less than the length of the list.
+
+   const list = new List();
+   list.insertLast('a');
+   list.insertLast('b');
+   list.insertLast('c');
+   list.insertLast('d');
+    fromLast(list, 2).data // 'b'
+
+*/
+function fromLast(list, n) {
+  let slow = list.getFirst();
+  let fast = list.getFirst();
+
+  while (n > 0) {
+    fast = fast.next;  //moves n number of spaces
+    n--;  //decrements by 1 until 0
+  }
+
+  while (fast.next) { //while it's not null
+    slow = slow.next; //+1
+    fast = fast.next;  //+1
+  }
+
+  return slow;
+}
+
+module.exports = fromLast;
+ 
+//From circular LinkedList
+class Node {
+  constructor(data, next = null) {
+    this.data = data;
+    this.next = next;
+  }
+}
+
+class LinkedList {
+  constructor(values = []) {
+    this.head = null;
+
+    for (let value of values) {
+      this.insertLast(value);
+    }
+  }
+
+  clear() {
+    this.head = null;
+  }
+
+  size() {
+    let counter = 0;
+    let node = this.head;
+
+    while (node) {
+      counter++;
+      node = node.next;
+    }
+
+    return counter;
+  }
+
+  getAt(index) {
+    if (!this.head) {
+      return null;
+    }
+
+    let counter = 0;
+    let node = this.head;
+    while (node) {
+      if (counter === index) {
+        return node;
+      }
+      node = node.next;
+      counter++;
+    }
+    return null;
+  }
+
+  insertAt(data, index) {
+    if (!this.head) {
+      this.head = new Node(data);
+      return;
+    }
+
+    if (index === 0) {
+      this.head = new Node(data, this.head);
+      return;
+    }
+
+    let counter = 1;
+    let previous = this.head;
+    let node = this.head.next;
+    while (node) {
+      if (counter === index) {
+        previous.next = new Node(data, node);
+        return;
+      }
+      previous = node;
+      node = node.next;
+      counter++;
+    }
+
+    previous.next = new Node(data, node);
+  }
+
+  removeFirst() {
+    if (!this.head) {
+      return;
+    }
+
+    this.head = this.head.next;
+  }
+
+  removeLast() {
+    if (!this.head) {
+      return;
+    }
+
+    if (!this.head.next) {
+      this.head = null;
+      return;
+    }
+
+    let previous = this.head;
+    let node = this.head.next;
+    while (node.next) {
+      previous = node;
+      node = node.next;
+    }
+    previous.next = null;
+  }
+
+  removeAt(index) {
+    if (!this.head) {
+      return;
+    }
+
+    let counter = 0;
+    let node = this.head;
+    while (node) {
+      if (counter === index - 1) {
+        if (node.next) {
+          return (node.next = node.next.next);
+        } else {
+          return (node.next = null);
+        }
+      }
+      node = node.next;
+      counter++;
+    }
+  }
+
+  getFirst() {
+    return this.head;
+  }
+
+  insertFirst(data) {
+    this.head = new Node(data, this.getFirst());
+  }
+
+  getLast() {
+    if (!this.head) {
+      return null;
+    }
+
+    let node = this.head;
+    while (node.next) {
+      node = node.next;
+    }
+
+    return node;
+  }
+
+  insertLast(data) {
+    const last = this.getLast();
+
+    if (last) {
+      last.next = new Node(data);
+      return last.next;
+    } else {
+      this.head = new Node(data);
+      return this.head;
+    }
+  }
+
+  forEach(fn) {
+    if (!this.head) {
+      return null;
+    }
+
+    let node = this.head;
+    while (node) {
+      fn(node);
+      node = node.next;
+    }
+  }
+
+  *[Symbol.iterator]() {
+    let node = this.head;
+    while (node) {
+      yield node;
+      node = node.next;
+    }
+  }
+}
+
+module.exports = { Node, LinkedList };
+
+
+/*
+Given the root node of a tree, return
+an array where each element is the width
+of the tree at each level.
+
+Given:
+    0
+  / |  \
+1   2   3
+|       |
+4       5
+
+Answer: [1, 3, 2]
+
+Notes
+  root is a single node. 
+  We are not working with a Tree.
+  Whenever you see the word "width" you should associate it with a Breadth First Traversal 
+*/
+
+//first node of the tree accessing the data property of the tree, and "stopper" any value we can identify
+//initialize with 0
+function levelWidth(root) {
+  const arr = [root, "stopper"];
+  width_counter = [0];
+
+  //don't confuse with only presence of "stopper".  Also, we remove the first element and return it.
+  while (arr.length > 1) {
+    const node = arr.shift();
+
+    //If the node we're currently looking at is "stopper" we want to take our width_counter variable and push a new element of 0
+    if (node === "stopper") {
+      width_counter.push(0);
+      arr.push("stopper");
+      //If we're working with a node we want to select all of it's children and add them to the end of our array. Also we need to increment the last element in the width_counter index. The last element in width_counter represents the current level of our tree that we're currently working on.
+    } else {
+      arr.push(...node.children);
+      width_counter[width_counter.length - 1]++;
+    }
+  }
+  return width_counter;
+}
+
+module.exports = levelWidth;
+
+
+
+function levelWidth(root) {
+  const arr = [root, "stopper"];
+  const width_counter = [0];
+
+  //don't confuse with only presence of "stopper".  Also, we remove the first element and return it.
+  while (arr.length > 1) {
+    const node = arr.shift();
+
+    //If the node we're currently looking at is "stopper" we want to take our width_counter variable and push a new element of 0
+    if (node === "stopper") {
+      width_counter.push(0);
+      arr.push("stopper");
+      //If we're working with a node we want to select all of it's children and add them to the end of our array. Also we need to increment the last element in the width_counter index. The last element in width_counter represents the current level of our tree that we're currently working on.
+    } else {
+      arr.push(...node.children);
+      width_counter[width_counter.length - 1]++;
+    }
+  }
+  return width_counter;
+}
+
+
+
+
+/*
+1) Implement the Node class to create a binary search tree.  
+The constructor should initialize values 'data', 'left', and 'right'.
+2) Implement the 'insert' method for the Node class.  
+Insert should accept an argument 'data', then create an insert a new node at the appropriate location in the tree.
+3) Implement the 'contains' method for the Node class.  
+Contains should accept a 'data' argument and return the Node in the tree with the same value.
+If the value isn't in the tree return null.
+*/
+class Node {
+  //handles data that is passed in.
+  //this.left and this.right are references to child nodes.We're specifying null because it doesn't have children.
+  constructor(data) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
+  }
+
+  insert(data) {
+    //insert data at the appropriate location of the tree.  If the incoming data value is less than this.data and this.left is not null then we want to do the following:
+    if (data < this.data && this.left) {
+      this.left.insert(data);
+    } else if (data < this.data) {
+      this.left = new Node(data); //create a new Node and pass it in
+    } else if (data > this.data && this.right) {
+      this.right.insert(data);
+    } else if (data > this.data) {
+      this.right = new Node(data);
+    }
+  }
+  //contains is similar to search through our tree
+  contains(data) {
+    if (this.data === data) {
+      return this; //returning the entire node
+    }
+    //verifying that this.data is less than the data that's passed in and that there is a node present on the right side
+    //With recursion we need to have a return statement if there is a presence of a value
+    if (this.data < data && this.right) {
+      return this.right.contains(data);
+    } else if (this.data > data && this.left) {
+      return this.left.contains(data);
+    }
+
+    return null; //if some data argument does not exist in our tree
+  }
+}
+
+module.exports = Node;
+
+
+
+
+/*
+Given a root node, validate the binary search tree. 
+Ensure that every node's left hand child is less than the parent node's value, 
+and that every node's right hand child is greater than the parent
+*/
+
+function validate(node, min = null, max = null) {
+  //When we move to the left we check max value, when we move to the right we check min value.
+  //Checking the case if we have not yet set a max value and if the value is more than the max value
+  if (max !== null && node.data > max) {
+    return false;
+  }
+  if (min !== null && node.data < min) {
+    return false;
+  }
+
+  //If there is a presence of a node on the left and if calling validate with the node on the left, and some minimum value and then a maximum value of the current nodes data and it returns false, we will flip it with the ! and it will return a true value.  !validate causes recursion to occur. 
+  if (node.left && !validate(node.left, min, node.data)) {
+    return false;
+  }
+  if (node.right && !validate(node.right, node.data, max)) {
+    return false;
+  }
+  return true
+}
+
+module.exports = validate;
+
+
+class Node {   //validating
+  constructor(data) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
+  }
+
+  insert(data) {
+    if (data < this.data && this.left) {
+      this.left.insert(data);
+    } else if (data < this.data) {
+      this.left = new Node(data);
+    } else if (data > this.data && this.right) {
+      this.right.insert(data);
+    } else if (data > this.data) {
+      this.right = new Node(data);
+    }
+  }
+}
+
+module.exports = Node;
+
+
+/*
+Create an 'eventing' library out of the
+Events class.  The Events class should
+have methods 'on', 'trigger', and 'off'.
+*/
+
+class Events {
+  constructor() {
+    //storage for establishing an association between events and callbacks.
+    //keys are different event names, values for each key is an array that contains all of the callbacks.
+    this.events = {};
+  }
+
+  // Register an event handler.  eventName is a string. callback gets invoked when the event is triggered.
+  // Taking the event name and adding it as a key to the events object
+  on(eventName, callback) {
+    if (this.events[eventName]) {
+      //checking for presence of the event, and also the presence of an array.
+      this.events[eventName].push(callback); //adding a callback to the end of the array.
+    } else {
+      this.events[eventName] = [callback]; //if there isn't an array we make one and add the event to it.
+    }
+  }
+
+  // Trigger all callbacks associated with a given eventName. 
+  // We look at our events object via the key of eventName and for every callback in that array, we invoke it.
+  trigger(eventName) {
+    if (this.events[eventName]) {  //checking for presence
+      for (let cb of this.events[eventName]) {  //invoking each one 
+        cb();
+      }
+    }
+  }
+
+  // Remove or Deregister all of the event handlers associated with the given eventName
+  off(eventName) {
+    delete this.events[eventName];
+  }
+}
+
+module.exports = Events;
+
+
+
+/* 
+Generators simplify iterator authoring using function* and yield
+A function declared as function* returns a Generator Instance. 
+  Generators are subtypes of iterators which include additional next and throw.
+These enable values to flow back into the generator, so yield is an expression form which returns a value or returns throws. 
+
+Note
+  Generators also can be used to enable "await" like async programming. 
+*/
+
+function* numbers() {
+  const result = 1 + 1;
+  return 20 + (yield result);
+}
+
+const generator = numbers(); //returns a generator object. It has the ability to step through the generator function with the "next" method
+generator; // {}
+generator.next(); //{"value": 2, "done": false}
+generator.next(); //{"value": null, "done": true}
+generator.next(10); //{"value": 30, "done": true}  the value 10 replaces (yield result)
+
+function* list() {
+  yield 1;
+  yield 2;
+  yield 3;
+  yield 4;
+  yield 5;
+}
+
+const generator = list();
+// generator.next(); // {"value": 1, "done": false}
+// generator.next(); // {"value": 2, "done": false}
+// generator.next(); // {"value": 3, "done": false}
+// generator.next(); // {"value": 4, "done": false}
+// generator.next(); // {"value": 5, "done": false}
+// generator.next(); // {"done": true}
+
+const newNumbers = [];
+for (let value of list()) {
+  newNumbers.push(value);
+} // 5
+newNumbers; // [1,2,3,4,5]
+
+function* newList() {
+  yield 1;
+  yield 2;
+  yield* newList2(); //passing in a new generator
+  yield 6;
+  yield 7;
+}
+
+function* newList2() {
+  yield 3;
+  yield 4;
+  yield 5;
+}
+
+const newGenerator = newList();
+
+const newValues = [];
+for (let value of newGenerator) {
+  values.push(value);
+} // 7
+
+newValues; // [1,2,3,4,5,6,7]
+
+
+class Tree {
+  constructor(value = null, children = []) {
+    this.value = value;
+    this.children = children;
+  }
+  *printValues() {
+    //Creating a generator that is a property of our tree class.
+    yield this.value;
+    for (let child of this.children) {
+      yield* child.printValues();
+    }
+  }
+}
+
+const tree = new Tree(1, [new Tree(2, [new Tree(4)]), new Tree(3)]);
+//first node has a child of 2 and 3
+//second node on 2 has a child of 4
+
+const treeValues = [];
+for (let value of tree.printValues()) {
+  values.push(value);
+} //4
+values; // [1,2,4,3]
+
+
+
+/*
+[10, -30, 97, 0, 5]
+
+From i=0 to < array.length
+From j = 0 to (array.length -1)
+If the element at j is greater than j+1 
+  swap elements at j and j+1
+Notes
+  Nested for loops iterating over the same collection of data is a red flag. n * n complexity. 
+  The purpose of bubbleSort is to find the largest number in the array and drag it to the far right side.
+*/
+
+function bubbleSort(arr) {
+  //standard for loop because we want access to index and not make actions on specific elements
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length - i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        const lesserValue = arr[j + 1];
+        arr[j + 1] = arr[j];
+        arr[j] = lesserValue;
+      }
+    }
+  }
+  return arr;
+}
+
+/*
+[10, -30, 97, 0, 5]
+i=0
+j=
+indexOfMin=
+
+From i=0 to < array.length
+  Assume the element at "i" is the least in the array, assign i to "indexOfMin"
+  For j from i+1 to end of Array
+    See if there is an element with a lower value
+      If there is, record it's index
+  If the index of the current element and the index of the "lowest" element are not the same, swap them.
+Notes
+  Also known as prove me wrong algorithm 
+
+*/
+
+function selectionSort(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let indexOfMin = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[indexOfMin]) {
+        indexOfMin = j;
+      }
+    }
+    if (indexOfMin !== i) {
+      let lesserValue = arr[indexOfMin];
+      arr[indexOfMin] = arr[i];
+      arr[i] = lesserValue;
+    }
+  }
+  return arr;
+}
+
+/*
+mergeSort 
+Utilizes recursion and two functions
+
+We split the array into two and then we split those halves 
+We repeat the same step
+Now the Array contains one element, and it can't be split. 
+The two arrays each have a single element and they are joined together into one array with two elements. 
+*/
+function mergeSort(arr) {
+  if (arr.length === 1) {
+    return arr;
+  }
+
+  const center = Math.floor(arr.length / 2);
+  const left = arr.slice(0, center); //from 0 index to up to but not including center index
+  const right = arr.slice(center); //from center index to end
+
+  return merge(mergeSort(left), mergeSort(right));
+}
+
+/*
+merge 
+Doesn't contain recursion
+  left and right are two separate sorted arrays of values  [-30, 22]   [0, 97]
+It takes two separate sorted arrays and merges them into one sorted array called results
+
+First we create a "results" array
+While there are still elements in BOTH arrays
+  IF the first element in the left half is less than the first element in the right half
+    We shift the element from left into the "results" array.
+  ELSE
+    We shift the element from right into a "results" array
+Take everything from the array that still has stuff in it and put it in results 
+*/
+function merge(left, right) {
+  const results = [];
+  while (left.length && right.length) {
+    //fails when one of them becomes length of 0
+    if (left[0] < right[0]) {
+      results.push(left.shift());
+    } else {
+      results.push(right.shift());
+    }
+  }
+  return [...results, ...left, ...right];
+}
+
+function merge2(left, right) {
+  return left.concat(right).sort((a, b) => a - b);
+}
+
+module.exports = { bubbleSort, selectionSort, mergeSort, merge2, merge };
