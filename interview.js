@@ -77,18 +77,76 @@
 
 // maxCharacters("aaabbc");
 
-function fizzBuzz(n) {
-  for (let i = 1; i <= n; i++) {
-    if (i % 15 === 0) {
-      console.log("fizzbuzz");
-    } else if (i % 3 === 0) {
-      console.log("fizz");
-    } else if (i % 5 === 0) {
-      console.log("buzz");
-    } else {
-      console.log(i);
-    }
-  }
+// function fizzBuzz(n) {
+//   for (let i = 1; i <= n; i++) {
+//     if (i % 15 === 0) {
+//       console.log("fizzbuzz");
+//     } else if (i % 3 === 0) {
+//       console.log("fizz");
+//     } else if (i % 5 === 0) {
+//       console.log("buzz");
+//     } else {
+//       console.log(i);
+//     }
+//   }
+// }
+// console.log(fizzBuzz(8));
+
+// function chunk1(array, size) {
+//   let chunked = []
+//   for (let element of array) {
+//     debugger
+//     const last = chunked[chunked.length - 1]
+//     if (!last || last.length === size) {
+//       chunked.push([element])
+//     } else {
+//       last.push(element)
+//     }
+//   }
+//   return chunked
+// }
+
+// chunk1([1, 2, 3, 4], 2)
+
+// function chunk2(array, size) {
+//   const chunked = []
+//   let index = 0
+//   while (index < array.length) {
+//     chunked.push(array.slice(index, index + size))
+//     index += size
+//   }
+// }
+
+function helperString(str) {
+  return str.replace(/[^\w]/g, "").toLowerCase().split("").sort().join();
 }
 
-console.log(fizzBuzz(8));
+function anagramChecker(string1, string2) {
+  return helperString(string1) === helperString(string2);
+}
+
+function buildCharacterMap(str) {
+  const charMap = {};
+  for (let char of str.replace(/[^\w]/g, "").toLowerCase()) {
+    charMap[char] = charMap[char] + 1 || 1;
+  }
+  return charMap;
+}
+
+buildCharacterMap("hello there");
+
+
+function anagramChecker2(str1, str2) {
+  const aCharMap = buildCharacterMap(str1)
+  const bCharMap = buildCharacterMap(str2)
+
+  if (Object.keys(aCharMap).length !== Object.keys(bCharMap).length) {
+    return false
+  }
+  for (let char in charMap) {
+    if (aCharMap[char] !== bCharMap[char]) {
+      return false 
+    }
+  }
+  return true
+}
