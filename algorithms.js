@@ -137,6 +137,7 @@ maxCharacters("abbcccddddeeeeefff");
 
 function fizzBuzzer(n) {
   for (let i = 1; i <= n; i++) {
+    debugger
     if (i % 15 === 0) {
       console.log("fizzbuzz"); //if multiple of 15
     } else if (i % 3 === 0) {

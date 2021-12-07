@@ -77,7 +77,7 @@
 
 // maxCharacters("aaabbc");
 
-function fizzBuzzer(n) {
+function fizzBuzz(n) {
   for (let i = 1; i <= n; i++) {
     if (i % 15 === 0) {
       console.log("fizzbuzz");
@@ -86,7 +86,9 @@ function fizzBuzzer(n) {
     } else if (i % 5 === 0) {
       console.log("buzz");
     } else {
-      console.log(n);
+      console.log(i);
     }
   }
 }
+
+console.log(fizzBuzz(8));
