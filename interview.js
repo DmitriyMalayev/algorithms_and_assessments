@@ -58,21 +58,35 @@
 
 // palindromeTest3("HelloThrees")
 
-function maxCharacters(str) {
-  const charMap = {};
-  for (let char of str) {
-    charMap[char] ? charMap[char]++ : (charMap[char] = 1);
-  }
-  let max = 0;
-  let maxChar = "";
+// function maxCharacters(str) {
+//   const charMap = {};
+//   for (let char of str) {
+//     charMap[char] ? charMap[char]++ : (charMap[char] = 1);
+//   }
+//   let max = 0;
+//   let maxChar = "";
 
-  for (let char in charMap) {
-    if (charMap[char] > max) {
-      max = charMap[char];
-      maxChar = char;
+//   for (let char in charMap) {
+//     if (charMap[char] > max) {
+//       max = charMap[char];
+//       maxChar = char;
+//     }
+//   }
+//   return maxChar;
+// }
+
+// maxCharacters("aaabbc");
+
+function fizzBuzzer(n) {
+  for (let i = 1; i <= n; i++) {
+    if (i % 15 === 0) {
+      console.log("fizzbuzz");
+    } else if (i % 3 === 0) {
+      console.log("fizz");
+    } else if (i % 5 === 0) {
+      console.log("buzz");
+    } else {
+      console.log(n);
     }
   }
-  return maxChar;
 }
-
-maxCharacters("aaabbc");
