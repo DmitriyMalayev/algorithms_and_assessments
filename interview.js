@@ -117,36 +117,55 @@
 //   }
 // }
 
-function helperString(str) {
-  return str.replace(/[^\w]/g, "").toLowerCase().split("").sort().join();
-}
+// function helperString(str) {
+//   return str.replace(/[^\w]/g, "").toLowerCase().split("").sort().join();
+// }
 
-function anagramChecker(string1, string2) {
-  return helperString(string1) === helperString(string2);
-}
+// function anagramChecker(string1, string2) {
+//   return helperString(string1) === helperString(string2);
+// }
 
-function buildCharacterMap(str) {
-  const charMap = {};
-  for (let char of str.replace(/[^\w]/g, "").toLowerCase()) {
-    charMap[char] = charMap[char] + 1 || 1;
+// function buildCharacterMap(str) {
+//   const charMap = {};
+//   for (let char of str.replace(/[^\w]/g, "").toLowerCase()) {
+//     charMap[char] = charMap[char] + 1 || 1;
+//   }
+//   return charMap;
+// }
+
+// buildCharacterMap("hello there");
+
+// function anagramChecker2(str1, str2) {
+//   const aCharMap = buildCharacterMap(str1)
+//   const bCharMap = buildCharacterMap(str2)
+
+//   if (Object.keys(aCharMap).length !== Object.keys(bCharMap).length) {
+//     return false
+//   }
+//   for (let char in charMap) {
+//     if (aCharMap[char] !== bCharMap[char]) {
+//       return false
+//     }
+//   }
+//   return true
+// }
+
+function capitalizedWords(str) {
+  const words = [];
+  for (let word of str.split(" ")) {
+    words.push(word[0].toUpperCase() + word.slice(1));
   }
-  return charMap;
+  return words.join(" ");
 }
 
-buildCharacterMap("hello there");
-
-
-function anagramChecker2(str1, str2) {
-  const aCharMap = buildCharacterMap(str1)
-  const bCharMap = buildCharacterMap(str2)
-
-  if (Object.keys(aCharMap).length !== Object.keys(bCharMap).length) {
-    return false
-  }
-  for (let char in charMap) {
-    if (aCharMap[char] !== bCharMap[char]) {
-      return false 
+function capitalizedWords2(str) {
+  let result = str[0].toUpperCase();
+  for (let i = 1; i < str.length; i++) {
+    if (str[i - 1] === " ") {
+      result += str[i].toUpperCase();
+    } else {
+      result += str[i];
     }
   }
-  return true
+  return result;
 }
