@@ -150,39 +150,107 @@
 //   return true
 // }
 
-function capitalizedWords(str) {
-  const words = [];
-  for (let word of str.split(" ")) {
-    words.push(word[0].toUpperCase() + word.slice(1));
+// function capitalizedWords(str) {
+//   const words = [];
+//   for (let word of str.split(" ")) {
+//     words.push(word[0].toUpperCase() + word.slice(1));
+//   }
+//   return words.join(" ");
+// }
+
+// function capitalizedWords2(str) {
+//   let result = str[0].toUpperCase();
+//   for (let i = 1; i < str.length; i++) {
+//     if (str[i - 1] === " ") {
+//       result += str[i].toUpperCase();
+//     } else {
+//       result += str[i];
+//     }
+//   }
+//   return result;
+// }
+
+// function simpleArraySum(ar) {
+//   let sum = 0;
+//   for (let n of ar) {
+//     sum += n;
+//   }
+//   return sum;
+// }
+
+// function simpleArraySum2(ar) {
+//   return ar.reduce((a, b) => {
+//     return a + b;
+//   }, 0);
+// }
+
+// function simpleArraySum2(ar) {
+//   return ar.reduce((a, b) => a + b);
+// }
+
+// function compareTriplets(a, b) {
+//   let score = [0, 0];
+//   for (i = 0; i < 3; i++) {
+//     if (a[i] > b[i]) {
+//       score[0]++;
+//     } else if (a[i] < b[i]) {
+//       score[1]++;
+//     }
+//   }
+//   return score;
+// }
+
+// function stepsMaker1(n) {
+//   for (let row = 0; row < n; row++) {
+//     let stair = "";
+//     for (let column = 0; column < n; column++) {
+//       column <= row ? (stair += "#") : (stair += " ");
+//     }
+//     console.log(stair);
+//   }
+// }
+
+// function stepsMaker2(n, row = 0, stair = "") {
+//   if (n === row) {
+//     return;
+//   }
+//   if (n === stair.length) {
+//     console.log(stair);
+//     return steps(n, row + 1, "");
+//   }
+//   if (stair.length <= row) {
+//     stair += "#";
+//   } else {
+//     stair += " ";
+//   }
+//   steps(n, row, stair);
+// }
+
+// function stepsMaker3(n, row = 0, stair = "") {
+//   if (n === row) {
+//     return;
+//   }
+//   if (n === stair.length) {
+//     console.log(stair);
+//     return steps(n, row + 1, "");
+//   }
+//   const add = stair.length <= row ? "#" : " ";
+//   steps(n, row, stair + add);
+// }
+
+function printNumber(num) {
+  if (num === 0) {
+    return;
   }
-  return words.join(" ");
+  console.log(num);
+  printNumber(num - 1);
 }
 
-function capitalizedWords2(str) {
-  let result = str[0].toUpperCase();
-  for (let i = 1; i < str.length; i++) {
-    if (str[i - 1] === " ") {
-      result += str[i].toUpperCase();
-    } else {
-      result += str[i];
-    }
+
+function printNumber2(num, dec = 1) {
+  if (num === 0) {
+    return
   }
-  return result;
+  console.log(num)
+  printNumber2(num - dec)
 }
-
-function simpleArraySum(ar) {
-  let sum = 0
-  for (let n of ar) {
-    sum += n
-  }
-}
-
-function simpleArraySum2(ar) {
-  return ar.reduce((a, b) => { return a + b }, 0)
-}
-
-
-function simpleArraySum2(ar) {
-  return ar.reduce((a, b) => a + b)
-}
-
