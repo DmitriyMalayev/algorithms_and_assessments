@@ -169,3 +169,20 @@ function capitalizedWords2(str) {
   }
   return result;
 }
+
+function simpleArraySum(ar) {
+  let sum = 0
+  for (let n of ar) {
+    sum += n
+  }
+}
+
+function simpleArraySum2(ar) {
+  return ar.reduce((a, b) => { return a + b }, 0)
+}
+
+
+function simpleArraySum2(ar) {
+  return ar.reduce((a, b) => a + b)
+}
+
