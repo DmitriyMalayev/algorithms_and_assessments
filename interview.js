@@ -238,19 +238,41 @@
 //   steps(n, row, stair + add);
 // }
 
-function printNumber(num) {
-  if (num === 0) {
+// function printNumber(num) {
+//   if (num === 0) {
+//     return;
+//   }
+//   console.log(num);
+//   printNumber(num - 1);
+// }
+
+// function printNumber2(num, dec = 1) {
+//   if (num === 0) {
+//     return
+//   }
+//   console.log(num)
+//   printNumber2(num - dec)
+// }
+
+// function pyramidBuilder1(n) {
+//   midpoint = Math.floor((2 * n - 1) / 2);
+//   for (let row = 0; row < n; row++) {
+//     let level = "";
+//     for (let column = 0; column < 2 * n - 1; column++) {
+//       if (midpoint - row <= column && midpoint + row >= column) {
+//         level += "#";
+//       } else {
+//         level += " ";
+//       }
+//     }
+//     console.log(level);
+//   }
+// }
+// pyramidBuilder1(3);
+
+function pyramidBuilder2(n, row = 0, level = "") {
+  const midpoint = Math.floor((2 * n - 1) / 2);
+  if (row === n) {
     return;
   }
-  console.log(num);
-  printNumber(num - 1);
-}
-
-
-function printNumber2(num, dec = 1) {
-  if (num === 0) {
-    return
-  }
-  console.log(num)
-  printNumber2(num - dec)
 }
