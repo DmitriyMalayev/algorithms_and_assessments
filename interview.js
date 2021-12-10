@@ -309,3 +309,19 @@ function pyramid(n, row = 0, level = "") {
   }
   pyramid(n, row, level + add);
 }
+
+function howManyVowels(str) {
+  let num = 0;
+  let checker = ["a", "e", "i", "o", "u"];
+  for (let letter of str.toLowerCase()) {
+    if (checker.includes(letter)) {
+      num += 1;
+    }
+  }
+  return num;
+}
+
+function howManyVowels2(str) {
+  const matches = str.match(/[aeiou]/gi);
+  return matches ? matches.length : 0;
+}
