@@ -270,58 +270,58 @@
 // }
 // pyramidBuilder1(3);
 
-function pyramidBuilder2(n, row = 0, level = "") {
-  if (row === n) {
-    return;
-  }
-  if (level.length === 2 * n - 1) {
-    console.log(level);
-    return pyramidBuilder2(n, row + 1);
-  }
-  const midpoint = Math.floor((2 * n - 1) / 2);
+// function pyramidBuilder2(n, row = 0, level = "") {
+//   if (row === n) {
+//     return;
+//   }
+//   if (level.length === 2 * n - 1) {
+//     console.log(level);
+//     return pyramidBuilder2(n, row + 1);
+//   }
+//   const midpoint = Math.floor((2 * n - 1) / 2);
 
-  let add;
-  if (midpoint - row <= level.length && midpoint.length >= level.length) {
-    add = "";
-  } else {
-    add = " ";
-  }
-  pyramidBuilder2(n, row, level + add);
-}
-pyramidBuilder2(3);
+//   let add;
+//   if (midpoint - row <= level.length && midpoint.length >= level.length) {
+//     add = "";
+//   } else {
+//     add = " ";
+//   }
+//   pyramidBuilder2(n, row, level + add);
+// }
+// pyramidBuilder2(3);
 
-function pyramid(n, row = 0, level = "") {
-  if (row === n) {
-    return;
-  }
+// function pyramid(n, row = 0, level = "") {
+//   if (row === n) {
+//     return;
+//   }
 
-  if (level.length === 2 * n - 1) {
-    console.log(level);
-    return pyramid(n, row + 1);
-  }
+//   if (level.length === 2 * n - 1) {
+//     console.log(level);
+//     return pyramid(n, row + 1);
+//   }
 
-  const midpoint = Math.floor((2 * n - 1) / 2);
-  let add;
-  if (midpoint - row <= level.length && midpoint + row >= level.length) {
-    add = "#";
-  } else {
-    add = " ";
-  }
-  pyramid(n, row, level + add);
-}
+//   const midpoint = Math.floor((2 * n - 1) / 2);
+//   let add;
+//   if (midpoint - row <= level.length && midpoint + row >= level.length) {
+//     add = "#";
+//   } else {
+//     add = " ";
+//   }
+//   pyramid(n, row, level + add);
+// }
 
-function howManyVowels(str) {
-  let num = 0;
-  let checker = ["a", "e", "i", "o", "u"];
-  for (let letter of str.toLowerCase()) {
-    if (checker.includes(letter)) {
-      num += 1;
-    }
-  }
-  return num;
-}
+// function howManyVowels(str) {
+//   let num = 0;
+//   let checker = ["a", "e", "i", "o", "u"];
+//   for (let letter of str.toLowerCase()) {
+//     if (checker.includes(letter)) {
+//       num += 1;
+//     }
+//   }
+//   return num;
+// }
 
-function howManyVowels2(str) {
-  const matches = str.match(/[aeiou]/gi);
-  return matches ? matches.length : 0;
-}
+// function howManyVowels2(str) {
+//   const matches = str.match(/[aeiou]/gi);
+//   return matches ? matches.length : 0;
+// }
