@@ -343,8 +343,22 @@ function matrix(n) {
       counter++;
     }
     startRow++;
+  
+    for (let i = startRow; i <= endRow; i++) {
+      results[i][endColumn] = counter;
+      counter++;
+    }
+    endColumn--;
+    for (let i = endColumn; i >= startColumn; i--) {
+      results[endRow][i] = counter
+      counter++
+    }
+    endRow--
+    for (let i = endRow; i >= startRow; i--) {
+      results[i][startColumn] = counter
+      counter++
+    }
+    startColumn++
   }
-  for (let i = startRow; i <= endRow; i++) {
-    results[i][endColumn] = counter;
-  }
+  return results
 }
