@@ -137,7 +137,7 @@ maxCharacters("abbcccddddeeeeefff");
 
 function fizzBuzzer(n) {
   for (let i = 1; i <= n; i++) {
-    debugger
+    debugger;
     if (i % 15 === 0) {
       console.log("fizzbuzz"); //if multiple of 15
     } else if (i % 3 === 0) {
@@ -1236,11 +1236,10 @@ class LinkedList {
 
 module.exports = { Node, LinkedList };
 
-
-let arr = [1, 2, 3]
-arr.filter(element => {
+let arr = [1, 2, 3];
+arr.filter((element) => {
   return element !== 1;
-})
+});
 //[2,3]
 //arr  [1,2,3] filter is non destrucive
 
@@ -1249,10 +1248,7 @@ arr2.filter((element) => {
   return element !== 1;
 });
 
-//reassigning arr2 
-
-
-
+//reassigning arr2
 
 /* 
 Return the 'middle' node of a linked list.
@@ -1284,9 +1280,7 @@ function midpoint(list) {
   return slow; //returns when the while loop exits
 }
 
-
-midpoint()
-
+midpoint();
 
 /* 
 Given a linked list, return true if the list is circular, false if it is not.
@@ -1302,15 +1296,17 @@ Given a linked list, return true if the list is circular, false if it is not.
   circular(l) // true
 */
 
-function circular(list) { 
-  let slow = list.getFirst();  //same as list.head
+function circular(list) {
+  let slow = list.getFirst(); //same as list.head
   let fast = list.getFirst();
 
-  while (fast.next && fast.next.next) {  //If either is pointing to null it's not circular. null is falsy.  
-    slow = slow.next;  //+1
+  while (fast.next && fast.next.next) {
+    //If either is pointing to null it's not circular. null is falsy.
+    slow = slow.next; //+1
     fast = fast.next.next; //+2
 
-    if (slow === fast) {  //if both are pointing to the same exact node. We're not checking the data contents. 
+    if (slow === fast) {
+      //if both are pointing to the same exact node. We're not checking the data contents.
       return true;
     }
   }
@@ -1318,8 +1314,7 @@ function circular(list) {
   return false;
 }
 
-circular()
-
+circular();
 
 /*
 Given a linked list and integer n, return the element n spaces from the last node in the list.  
@@ -1339,20 +1334,21 @@ function fromLast(list, n) {
   let fast = list.getFirst();
 
   while (n > 0) {
-    fast = fast.next;  //moves n number of spaces
-    n--;  //decrements by 1 until 0
+    fast = fast.next; //moves n number of spaces
+    n--; //decrements by 1 until 0
   }
 
-  while (fast.next) { //while it's not null
+  while (fast.next) {
+    //while it's not null
     slow = slow.next; //+1
-    fast = fast.next;  //+1
+    fast = fast.next; //+1
   }
 
   return slow;
 }
 
 module.exports = fromLast;
- 
+
 //From circular LinkedList
 class Node {
   constructor(data, next = null) {
@@ -1533,7 +1529,6 @@ class LinkedList {
 
 module.exports = { Node, LinkedList };
 
-
 /*
 Given the root node of a tree, return
 an array where each element is the width
@@ -1579,8 +1574,6 @@ function levelWidth(root) {
 
 module.exports = levelWidth;
 
-
-
 function levelWidth(root) {
   const arr = [root, "stopper"];
   const width_counter = [0];
@@ -1601,9 +1594,6 @@ function levelWidth(root) {
   }
   return width_counter;
 }
-
-
-
 
 /*
 1) Implement the Node class to create a binary search tree.  
@@ -1654,9 +1644,6 @@ class Node {
 
 module.exports = Node;
 
-
-
-
 /*
 Given a root node, validate the binary search tree. 
 Ensure that every node's left hand child is less than the parent node's value, 
@@ -1673,20 +1660,20 @@ function validate(node, min = null, max = null) {
     return false;
   }
 
-  //If there is a presence of a node on the left and if calling validate with the node on the left, and some minimum value and then a maximum value of the current nodes data and it returns false, we will flip it with the ! and it will return a true value.  !validate causes recursion to occur. 
+  //If there is a presence of a node on the left and if calling validate with the node on the left, and some minimum value and then a maximum value of the current nodes data and it returns false, we will flip it with the ! and it will return a true value.  !validate causes recursion to occur.
   if (node.left && !validate(node.left, min, node.data)) {
     return false;
   }
   if (node.right && !validate(node.right, node.data, max)) {
     return false;
   }
-  return true
+  return true;
 }
 
 module.exports = validate;
 
-
-class Node {   //validating
+class Node {
+  //validating
   constructor(data) {
     this.data = data;
     this.left = null;
@@ -1707,7 +1694,6 @@ class Node {   //validating
 }
 
 module.exports = Node;
-
 
 /*
 Create an 'eventing' library out of the
@@ -1733,11 +1719,13 @@ class Events {
     }
   }
 
-  // Trigger all callbacks associated with a given eventName. 
+  // Trigger all callbacks associated with a given eventName.
   // We look at our events object via the key of eventName and for every callback in that array, we invoke it.
   trigger(eventName) {
-    if (this.events[eventName]) {  //checking for presence
-      for (let cb of this.events[eventName]) {  //invoking each one 
+    if (this.events[eventName]) {
+      //checking for presence
+      for (let cb of this.events[eventName]) {
+        //invoking each one
         cb();
       }
     }
@@ -1750,8 +1738,6 @@ class Events {
 }
 
 module.exports = Events;
-
-
 
 /* 
 Generators simplify iterator authoring using function* and yield
@@ -1819,7 +1805,6 @@ for (let value of newGenerator) {
 
 newValues; // [1,2,3,4,5,6,7]
 
-
 class Tree {
   constructor(value = null, children = []) {
     this.value = value;
@@ -1843,8 +1828,6 @@ for (let value of tree.printValues()) {
   values.push(value);
 } //4
 values; // [1,2,4,3]
-
-
 
 /*
 [10, -30, 97, 0, 5]
@@ -1959,3 +1942,21 @@ function merge2(left, right) {
 }
 
 module.exports = { bubbleSort, selectionSort, mergeSort, merge2, merge };
+
+function flippingBits(n) {
+  let lowBin = n.toString(2); //converts number to String with a specific base 2 means binary
+  let highBin = "";
+
+  // Number.toString() produced a binary string in high order to low order, we're prepending 0's from the left.
+  while (lowBin.length < 32) {
+    lowBin = 0 + lowBin;
+  }
+  // We only flip bits, no need to reverse the sequence.
+  for (let i = 0; i < lowBin.length; i++) {
+    highBin += lowBin[i] === "0" ? "1" : "0";
+  }
+  //converts String to a Number with a specific base
+  return parseInt(highBin, 2);
+}
+
+flippingBits(1000);
