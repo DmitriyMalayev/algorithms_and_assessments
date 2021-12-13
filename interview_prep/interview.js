@@ -326,70 +326,78 @@
 //   return matches ? matches.length : 0;
 // }
 
-function matrix(n) {
-  const results = [];
-  for (i = 0; i < n; i++) {
-    results.push([]);
-  }
-  let counter = 1;
-  let startColumn = 0;
-  let endColumn = n - 1;
-  let startRow = 0;
-  let endRow = n - 1;
+// function matrix(n) {
+//   const results = [];
+//   for (i = 0; i < n; i++) {
+//     results.push([]);
+//   }
+//   let counter = 1;
+//   let startColumn = 0;
+//   let endColumn = n - 1;
+//   let startRow = 0;
+//   let endRow = n - 1;
 
-  while (startColumn <= endColumn && startRow <= endRow) {
-    for (let i = startColumn; i <= endColumn; i++) {
-      results[startRow][i] = counter;
-      counter++;
-    }
-    startRow++;
+//   while (startColumn <= endColumn && startRow <= endRow) {
+//     for (let i = startColumn; i <= endColumn; i++) {
+//       results[startRow][i] = counter;
+//       counter++;
+//     }
+//     startRow++;
 
-    for (let i = startRow; i <= endRow; i++) {
-      results[i][endColumn] = counter;
-      counter++;
-    }
-    endColumn--;
-    for (let i = endColumn; i >= startColumn; i--) {
-      results[endRow][i] = counter;
-      counter++;
-    }
-    endRow--;
-    for (let i = endRow; i >= startRow; i--) {
-      results[i][startColumn] = counter;
-      counter++;
-    }
-    startColumn++;
-  }
-  return results;
-}
+//     for (let i = startRow; i <= endRow; i++) {
+//       results[i][endColumn] = counter;
+//       counter++;
+//     }
+//     endColumn--;
+//     for (let i = endColumn; i >= startColumn; i--) {
+//       results[endRow][i] = counter;
+//       counter++;
+//     }
+//     endRow--;
+//     for (let i = endRow; i >= startRow; i--) {
+//       results[i][startColumn] = counter;
+//       counter++;
+//     }
+//     startColumn++;
+//   }
+//   return results;
+// }
 
-function fibSeries(n) {
-  const result = [0, 1];
-  for (let i = 2; i <= n; i++) {
-    const a = result[i - 1];
-    const b = result[i - 2];
-    result.push(a + b);
-  }
-  return result[n];
-}
+// function fibSeries(n) {
+//   const result = [0, 1];
+//   for (let i = 2; i <= n; i++) {
+//     const a = result[i - 1];
+//     const b = result[i - 2];
+//     result.push(a + b);
+//   }
+//   return result[n];
+// }
 
-function fibWithRecursion(n) {
-  if (n < 2) {
-    return n;
-  }
-  return fib(n - 1) + fib(n - 2);
-} 
+// function fibWithRecursion(n) {
+//   if (n < 2) {
+//     return n;
+//   }
+//   return fib(n - 1) + fib(n - 2);
+// }
 
-function memoize(fn) {
-  const cache = {};
-  return function () {
-    if (cache[args]) {
-      return cache[args];
-    }
-    const result = fn.apply(this, args);
-    cache[args] = result;
-    return result;
-  };
-}
+// function memoize(fn) {
+//   const cache = {};
+//   return function () {
+//     if (cache[args]) {
+//       return cache[args];
+//     }
+//     const result = fn.apply(this, args);
+//     cache[args] = result;
+//     return result;
+//   };
+// }
 
-fib = memoize(fib);
+// fib = memoize(fib);
+
+function diagonalDifference() {}
+
+var matrix = [
+  [2, 3, 4],
+  [5, 3, -1],
+  [9, 8, -2],
+];
