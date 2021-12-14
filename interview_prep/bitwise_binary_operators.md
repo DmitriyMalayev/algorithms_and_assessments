@@ -26,7 +26,7 @@ XOR (only time it's 1 is when both x and y are different)
 0 ^ 0 = 0
 0 ^ 1 = 1
 1 ^ 1 = 0
-
+ 
 Convert
 
 toString(2) convert to binary 
