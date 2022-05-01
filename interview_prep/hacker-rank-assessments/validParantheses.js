@@ -14,7 +14,8 @@ var isValid = function (s) {
         return false;
       }
 
-      //pop removes the last element and returns it. If it's not the character that we want, return false.
+      // pop removes the last element and returns it. 
+      // If it's not the character that we want, return false.
     }
   }
   return !heap.length; //empty string, valid.
