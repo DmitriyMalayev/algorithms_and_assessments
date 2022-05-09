@@ -30,7 +30,7 @@ var romanToInt = function (s) {
   }
   return total;
 };
-
+romanToInt("III")
 // var romanToInt = function (s) {
 //   const map = {
 //     I: 1,

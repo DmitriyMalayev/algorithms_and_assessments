@@ -6,3 +6,6 @@ function countingSort(arr) {
   }
   return freqArray
 }
+
+
+countingSort([ -5, -10, 0, -3, 8, 5, -1, 10 ])

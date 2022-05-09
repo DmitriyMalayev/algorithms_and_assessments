@@ -17,8 +17,10 @@ function timeConversion(s) {
     } else {
       militaryHour = s.substring(0, 2); //1:00 AM - 11:00 AM
     }
-  } else { // P
-    if (s.substring(0, 2) == "12") {   // 12:00 PM
+  } else {
+    // P
+    if (s.substring(0, 2) == "12") {
+      // 12:00 PM
       militaryHour = s.substring(0, 2);
     } else {
       militaryHour = parseInt(s.substring(0, 2), 10) + 12;
@@ -26,3 +28,5 @@ function timeConversion(s) {
   }
   return militaryHour + s.substring(2, 8);
 }
+
+timeConversion("07:05:45PM");

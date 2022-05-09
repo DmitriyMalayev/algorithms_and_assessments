@@ -18,7 +18,7 @@ function miniMaxSum(arr) {
 
 miniMaxSum([7, 69, 2, 221, 8974]);
 
-console.log("07:05:45");
+// console.log("07:05:45");
 
 
 

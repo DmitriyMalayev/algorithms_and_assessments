@@ -1,4 +1,4 @@
-var merge = function (intervals) {
+function merge(intervals) {
   intervals.sort((a, b) => a[0] - b[0]);
   //sorting by 0 index
 
@@ -20,7 +20,7 @@ var merge = function (intervals) {
     }
   }
   return result;
-};
+}
 /*
 let intervalsInput = [
   [1, 3],
