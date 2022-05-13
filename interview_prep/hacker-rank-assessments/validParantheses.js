@@ -1,5 +1,5 @@
 var isValid = function (s) {
-  let bracket = {
+  let bracket = {  //object to reference 
     "(": ")",
     "[": "]",
     "{": "}",
@@ -26,3 +26,5 @@ var isValid = function (s) {
 // LAST IN FIRST OUT?
 
 isValid("(){[]}");
+
+
