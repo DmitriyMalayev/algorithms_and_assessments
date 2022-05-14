@@ -25,6 +25,6 @@ var isValid = function (s) {
 // constant time ?
 // LAST IN FIRST OUT?
 
-isValid("(){[]}");
+console.log(isValid("(){[]}"))
 
 
